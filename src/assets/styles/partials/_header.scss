@@ -1,0 +1,73 @@
+/**
+ * \--------------------------------------------------------------------\
+ * Header
+ * /--------------------------------------------------------------------/
+ */
+
+.top-bar {
+    padding: 0.5rem 0;
+
+    ul {
+        margin: 0;
+
+        li {
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 2.5rem;
+            }
+
+            a {
+                color: $white;
+                font-size: 1.4rem;
+                text-decoration: none;
+
+                i {
+                    font-size: 1.8rem;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &--right {
+        ul {
+            li {
+                &:not(:last-child) {
+                    margin-right: 1.2rem;
+                }
+
+                a {
+                    i {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        ul {
+            li {
+                &:not(:last-child) {
+                    margin-right: 1.5rem;
+                }
+            }
+        }
+
+        &--left {
+            margin-right: 1.5rem;
+        }
+
+        .container {
+            justify-content: center;
+        }
+    }
+}
