@@ -1,0 +1,55 @@
+/**
+ * \--------------------------------------------------------------------\
+ * Navbar
+ * /--------------------------------------------------------------------/
+ */
+
+.navbar {
+    padding: 0;
+
+    &-nav {
+        margin-left: auto;
+
+        .nav-item {
+            position: relative;
+
+            .nav-link {
+                display: block;
+                color: $black;
+                font-size: 1.5rem;
+                padding: 1rem 2.5rem;
+                text-transform: uppercase;
+                transition: all 0.5s;
+
+                &.active {
+                    background: $primary;
+                    color: $white;
+
+                    &::before {
+                        top: 100%;
+                        left: 50%;
+                        border: solid transparent;
+                        border-top-color: transparent;
+                        border-top-width: medium;
+                        border-right-width: medium;
+                        border-bottom-width: medium;
+                        border-left-width: medium;
+                        content: '';
+                        height: 0;
+                        width: 0;
+                        position: absolute;
+                        pointer-events: none;
+                        border-width: 8px;
+                        border-top-color: $primary;
+                        margin-left: -8px;
+                    }
+                }
+
+                &:hover {
+                    background: $primary;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
