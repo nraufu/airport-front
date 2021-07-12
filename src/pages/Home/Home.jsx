@@ -1,7 +1,15 @@
-import React from 'react';
+import { Fragment } from 'react';
+import hero from '../../assets/images/hero.png';
 
 const Home = () => {
-    return ( <h1>Home</h1> );
-}
- 
+    return (
+        <Fragment>
+            <div
+                className='hero'
+                style={{ backgroundImage: `url(${hero})` }}
+            ></div>
+        </Fragment>
+    );
+};
+
 export default Home;
