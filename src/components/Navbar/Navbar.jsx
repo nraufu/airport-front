@@ -28,7 +28,7 @@ const Navbar = () => (
             >
                 <ul className='navbar-nav'>
                     <NavItem link='/' exact label='Home' />
-                    <NavItem link='/flights' label='Flights Schedule' />
+                    <NavItem link='/schedules' label='Flight Schedules' />
                     <NavItem link='/services' label='Services' />
                     <NavItem link='/weather' label='Weather' />
                     <NavItem link='/covid' label='Covid-19' />
