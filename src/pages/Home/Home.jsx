@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import sky from '../../assets/images/blue-sky.jpg';
-import ImageLibrary from './../../parts/Gallery/Gallery';
-import Banner from '../../components/Banner/Banner';
-import Card from '../../components/Card/Card';
+import ImageLibrary from '../../parts/gallery/Gallery';
+import Banner from '../../components/banner/Banner';
+import Card from '../../components/card/Card';
 
 const Home = () => {
     const servicesCard = [
