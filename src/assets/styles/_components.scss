@@ -96,3 +96,44 @@
         transform: translate(24px, 0);
     }
 }
+
+/* --------------------- Input && button --------------------- */
+.form-control,
+.btn {
+    font-size: 1.4rem;
+}
+
+.form {
+    &-control {
+        margin-bottom: 1rem;
+    }
+
+    &-group {
+        label {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+/* --------------------- Login form --------------------- */
+.login-form {
+    background: $white;
+    box-shadow: 0 0.5rem 1.5rem rgba($gray-400, 0.6);
+    padding: 2rem;
+    width: 30%;
+    margin: 12rem auto;
+    border-radius: 1rem;
+    text-align: center;
+
+    .logo-img {
+        max-width: 10rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+    }
+
+    form {
+        text-align: left;
+    }
+}

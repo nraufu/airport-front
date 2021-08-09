@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Input = (props) => {
-    const { label, value, onChange, elementType } = props;
+    const { value, onChange, elementType, valueType } = props;
     let inputElement = null;
 
     switch (elementType) {
@@ -21,7 +21,7 @@ const Input = (props) => {
     }
     return (
         <div class='form-group'>
-            {/* <label>{label}</label> */}
+            <label>{valueType}</label>
             {inputElement}
         </div>
     );

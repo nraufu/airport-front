@@ -66,8 +66,6 @@ const SignIn = ({ loading }) => {
         });
     }
 
-    console.log(formElementsArray);
-
     let form = (
         <form onSubmit={loginHandler}>
             {formElementsArray.map((formElement) => (
@@ -89,6 +87,7 @@ const SignIn = ({ loading }) => {
                 clicked={loginHandler}
                 disabled={!formIsValid}
                 label='Submit'
+                className='btn btn-primary text-white mt-4'
             />
         </form>
     );

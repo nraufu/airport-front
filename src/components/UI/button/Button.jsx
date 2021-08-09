@@ -1,20 +1,15 @@
 import React from 'react';
-import classNames from 'classnames';
 
 const Button = ({ onClick, loading, disabled, label, className }) => {
-    const btnClass = classNames('btn btn-primary', {
-        [className]: className,
-    });
-
     return (
-        <button onClick={onClick} disabled={disabled} className={btnClass}>
+        <button onClick={onClick} disabled={disabled} className={className}>
             {loading ? (
                 <div className='d-flex'>
                     <i className='fa fa-spinner fa-spin'></i>
                     {label}
                 </div>
             ) : (
-                { label }
+                label
             )}
         </button>
     );
