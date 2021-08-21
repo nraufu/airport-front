@@ -13,6 +13,7 @@ import App from './App';
 import './assets/styles/main.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import './assets/icons/linearicons/style.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(
     <BrowserRouter>

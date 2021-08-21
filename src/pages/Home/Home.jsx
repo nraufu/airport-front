@@ -39,9 +39,11 @@ const Home = () => {
             >
                 <div className='row'>
                     {servicesCard.map((service, index) => (
-                        <div className='col-lg-4 col-md-6 col-12 service-card'>
+                        <div
+                            className='col-lg-4 col-md-6 col-12 service-card'
+                            key={index}
+                        >
                             <Card
-                                key={index}
                                 title={service.title}
                                 description={service.description}
                                 icon={service.icon}

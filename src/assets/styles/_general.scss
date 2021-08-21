@@ -22,3 +22,10 @@ body {
     padding-top: 70px;
     padding-bottom: 70px;
 }
+
+/* --------------------- Buttons --------------------- */
+.btn {
+    &:disabled {
+        cursor: not-allowed;
+    }
+}

@@ -5,7 +5,7 @@ import Input from '../../components/UI/input/Input';
 import Button from '../../components/UI/button/Button';
 import logo from '../../assets/images/logo.png';
 
-const SignIn = ({ loading }) => {
+const SignIn = () => {
     const [loginForm, setLoginForm] = useState({
         username: {
             elementType: 'input',
@@ -31,10 +31,7 @@ const SignIn = ({ loading }) => {
         },
     });
     const [formIsValid, setFormIsValid] = useState(false);
-
-    const loginHandler = (event) => {
-        event.preventDefault();
-    };
+    const [isLoading, setIsLoading] = useState(false);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedFormElement = updateObject(loginForm[inputIdentifier], {
@@ -66,6 +63,18 @@ const SignIn = ({ loading }) => {
         });
     }
 
+    const loginHandler = (event) => {
+        event.preventDefault();
+        const { username, password } = loginForm;
+        if (username.valid && password.valid) {
+            setIsLoading(true);
+            console.log(username.value, password.value);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 5000);
+        }
+    };
+
     let form = (
         <form onSubmit={loginHandler}>
             {formElementsArray.map((formElement) => (
@@ -92,14 +101,14 @@ const SignIn = ({ loading }) => {
         </form>
     );
 
-    if (loading) {
+    if (isLoading) {
         form = <Spinner />;
     }
 
     return (
         <div className='login-form'>
             <img src={logo} className='logo-img' alt='logo' />
-            {form}
+            <div className='position-relative'>{form}</div>
         </div>
     );
 };

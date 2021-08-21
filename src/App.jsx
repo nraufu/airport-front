@@ -21,7 +21,7 @@ const App = () => {
                 <Route path='/login' component={SignIn} />
                 <Route exact path='/' component={Home} />
             </Switch>
-            {/* <Footer /> */}
+            <Footer />
         </Fragment>
     );
 };

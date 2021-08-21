@@ -20,7 +20,7 @@ const Input = (props) => {
             break;
     }
     return (
-        <div class='form-group'>
+        <div className='form-group'>
             <label>{valueType}</label>
             {inputElement}
         </div>
