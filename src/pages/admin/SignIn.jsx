@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import { updateObject, checkValidity } from '../../shared/utility';
 import Spinner from './../../components/spinner/Spinner';
 import Input from '../../components/UI/input/Input';
 import Button from '../../components/UI/button/Button';
 import logo from '../../assets/images/logo.png';
+import { login } from '../../store/actions/login';
 
-const SignIn = () => {
+const SignIn = ({ onLogin }) => {
     const [loginForm, setLoginForm] = useState({
         username: {
             elementType: 'input',
@@ -63,15 +65,16 @@ const SignIn = () => {
         });
     }
 
-    const loginHandler = (event) => {
+    const loginHandler = async (event) => {
         event.preventDefault();
         const { username, password } = loginForm;
         if (username.valid && password.valid) {
             setIsLoading(true);
-            console.log(username.value, password.value);
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 5000);
+            await onLogin({
+                username: username.value,
+                password: password.value,
+            });
+            setIsLoading(false);
         }
     };
 
@@ -113,4 +116,8 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+const mapDispatchToProps = {
+    onLogin: login,
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);
