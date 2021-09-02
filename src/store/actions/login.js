@@ -1,11 +1,13 @@
-import reduxAction from '../../utils/redux-actions';
 import apiCall from '../../utils/apiCall';
 
-export const login = data => async dispatch => {
-const res = await apiCall.post(`${process.env.REACT_APP_URL}/api/admin/login`, data);
-console.log(res.data);
+export const login = (data) => async (dispatch) => {
+    const response = await apiCall.post(
+        `${process.env.REACT_APP_URL}/admin/login`,
+        data
+    );
 
-dispatch(reduxAction('LOGIN', res.data.data));
+    dispatch({
+        type: 'LOGIN_SUCCESS',
+        payload: response.data.data,
+    });
 };
-
-

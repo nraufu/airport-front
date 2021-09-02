@@ -65,17 +65,15 @@ const SignIn = ({ onLogin }) => {
         });
     }
 
-    const loginHandler = async (event) => {
-        event.preventDefault();
+    const loginHandler = async () => {
         const { username, password } = loginForm;
-        if (username.valid && password.valid) {
-            setIsLoading(true);
-            await onLogin({
-                username: username.value,
-                password: password.value,
-            });
-            setIsLoading(false);
-        }
+        console.log(username.value, password.value);
+        setIsLoading(true);
+        await onLogin({
+            username: username.value,
+            password: password.value,
+        });
+        setIsLoading(false);
     };
 
     let form = (

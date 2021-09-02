@@ -23,6 +23,24 @@ body {
     padding-bottom: 70px;
 }
 
+p {
+    font-size: 1.4rem;
+}
+
+a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.5s;
+
+    &.link {
+        font-size: 1.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 /* --------------------- Buttons --------------------- */
 .btn {
     &:disabled {

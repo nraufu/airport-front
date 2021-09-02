@@ -3,9 +3,11 @@ import sky from '../../assets/images/blue-sky.jpg';
 import ImageLibrary from '../../parts/gallery/Gallery';
 import Banner from '../../components/banner/Banner';
 import Card from '../../components/card/Card';
+import Footer from '../../parts/footer/Footer';
+import VisitRwanda from '../../parts/visit-rwanda/VisitRwanda';
 
 const Home = () => {
-    const servicesCard = [
+    const services = [
         {
             title: 'Weather',
             description: 'Weather forecast for the next days',
@@ -38,7 +40,7 @@ const Home = () => {
                 style={{ marginTop: '-15rem' }}
             >
                 <div className='row'>
-                    {servicesCard.map((service, index) => (
+                    {services.map((service, index) => (
                         <div
                             className='col-lg-4 col-md-6 col-12 service-card'
                             key={index}
@@ -55,7 +57,9 @@ const Home = () => {
                 </div>
             </div>
 
+            <VisitRwanda />
             <ImageLibrary />
+            <Footer />
         </Fragment>
     );
 };

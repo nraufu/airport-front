@@ -3,7 +3,7 @@ import axios from 'axios';
 class ApiCall {
 	constructor() {
 		const axiosInstance = axios.create( {
-			baseURL: `${process.env.REACT_APP_URL}`,
+			baseURL: `${process.env.REACT_APP_URL}/api`,
 		} );
 
 		this.get = async ( url ) => {

@@ -1,14 +1,16 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import Footer from '../../parts/footer/Footer';
 
 const Weather = () => {
     const notify = () => toast('weather updated successfully');
 
     return (
-        <div>
+        <>
             <button onClick={notify}>Notify!</button>
             <ToastContainer />
-        </div>
+            <Footer />
+        </>
     );
 };
 

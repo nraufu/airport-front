@@ -17,6 +17,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import './assets/icons/linearicons/style.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+console.log(process.env.REACT_APP_URL);
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

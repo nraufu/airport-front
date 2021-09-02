@@ -1,0 +1,26 @@
+/**
+ * \--------------------------------------------------------------------\
+ * Visit Rwanda
+ * /--------------------------------------------------------------------/
+ */
+
+.visit-rwanda {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .photo-item {
+        flex: 1 1 48%;
+        margin: 0.2rem;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

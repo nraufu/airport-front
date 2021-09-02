@@ -1,6 +1,5 @@
 import {success} from '../../utils/actions.js';
 
-
 const initialState = {
     success: null,
     token: null,
