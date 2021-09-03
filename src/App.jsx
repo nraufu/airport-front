@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Header from './components/header/Header';
+import Header from './components/Header/Header';
 import Home from './pages/home/Home';
 import Schedules from './pages/schedules/Schedules';
 import Services from './pages/services/Services';

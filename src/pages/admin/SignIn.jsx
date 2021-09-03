@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateObject, checkValidity } from '../../shared/utility';
-import Spinner from './../../components/spinner/Spinner';
-import Input from '../../components/UI/input/Input';
-import Button from '../../components/UI/button/Button';
+import Spinner from '../../components/Spinner/Spinner';
+import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
 import logo from '../../assets/images/logo.png';
 import { login } from '../../store/actions/login';
 
