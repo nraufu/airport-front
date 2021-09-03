@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../../parts/footer/Footer';
+import Footer from '../../parts/Footer/Footer';
 
 const Covid = () => {
     return (

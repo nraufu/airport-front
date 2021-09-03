@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Home from './pages/home/Home';
-import Schedules from './pages/schedules/Schedules';
-import Services from './pages/services/Services';
-import Covid from './pages/covid-19/Covid-19';
-import Weather from './pages/weather/Weather';
-import SignIn from './pages/admin/SignIn';
+import Home from './pages/Home/Home';
+import Schedules from './pages/Schedules/Schedules';
+import Services from './pages/Services/Services';
+import Covid from './pages/Covid-19/Covid-19';
+import Weather from './pages/Weather/Weather';
+import SignIn from './pages/Admin/SignIn';
 
 const App = () => {
     return (

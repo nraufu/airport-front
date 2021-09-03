@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import sky from '../../assets/images/blue-sky.jpg';
-import ImageLibrary from '../../parts/gallery/Gallery';
+import ImageLibrary from '../../parts/Gallery/Gallery';
 import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
-import Footer from '../../parts/footer/Footer';
-import VisitRwanda from '../../parts/visit-rwanda/VisitRwanda';
+import Footer from '../../parts/Footer/Footer';
+import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 
 const Home = () => {
     const services = [
