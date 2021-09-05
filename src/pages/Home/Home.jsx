@@ -5,6 +5,9 @@ import Card from '../../components/Card/Card';
 import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 import bannerImg from '../../assets/images/flying.jpg';
+import newsImg from '../../assets/images/blue-sky.jpg';
+import News from '../../components/News/News';
+import Title from '../../components/UI/Title/Title';
 
 const Home = () => {
     const services = [
@@ -28,6 +31,27 @@ const Home = () => {
             icon: 'lnr lnr-location',
             btnLabel: 'Discover',
             link: '/flights',
+        },
+    ];
+
+    const news = [
+        {
+            img: newsImg,
+            title: 'News One',
+            description:
+                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
+        },
+        {
+            img: newsImg,
+            title: 'News Two',
+            description:
+                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
+        },
+        {
+            img: newsImg,
+            title: 'News Three',
+            description:
+                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
         },
     ];
 
@@ -58,6 +82,10 @@ const Home = () => {
             </div>
 
             <VisitRwanda />
+            <div className='spacing-md'>
+                <Title name='Latest News' />
+                <News data={news} />
+            </div>
             <ImageLibrary />
             <Footer />
         </Fragment>

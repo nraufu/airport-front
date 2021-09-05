@@ -65,12 +65,14 @@ const InfoBox = () => {
                     </div>
 
                     {activeTab === 'departures' &&
-                        departures.map((departure) => (
-                            <ContentRow {...departure} />
+                        departures.map((departure, index) => (
+                            <ContentRow key={index} {...departure} />
                         ))}
 
                     {activeTab === 'arrivals' &&
-                        arrivals.map((arrival) => <ContentRow {...arrival} />)}
+                        arrivals.map((arrival, index) => (
+                            <ContentRow key={index} {...arrival} />
+                        ))}
                 </div>
 
                 <div className='text-center py-4 mt-1'>

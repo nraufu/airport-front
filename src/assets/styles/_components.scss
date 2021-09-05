@@ -8,7 +8,7 @@
     &-icon {
         height: 45px;
         width: 45px;
-        font-size: 14px;
+        font-size: 1.4rem;
         background-color: rgba($white, 0.3);
         border-radius: 50%;
         display: flex;
@@ -132,4 +132,35 @@
 .flights-wrapper {
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+/* --------------------- section Header --------------------- */
+.section-header {
+    position: relative;
+    margin-bottom: 4rem;
+    line-height: 1;
+
+    .title {
+        font-size: 5rem;
+        line-height: 5rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        padding-bottom: 2rem;
+    }
+
+    .subtitle {
+        font-size: 5rem;
+        font-weight: 300;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12rem;
+        height: 0.8rem;
+        background: $primary;
+    }
 }
