@@ -1,20 +1,17 @@
 import React from 'react';
-import classnames from 'classnames';
+import bannerImg from '../../assets/images/flying.jpg';
+import InfoBox from '../Info-Box/InfoBox';
 
-const Banner = ({ title, img, className }) => {
-    const wrapperClass = classnames('banner', {
-        [className]: className,
-    });
-
+const Banner = ({ title }) => {
     return (
         <div
-            className={wrapperClass}
-            style={{ backgroundImage: `url(${img})` }}
+            className='banner'
+            style={{ backgroundImage: `url(${bannerImg})` }}
         >
-            <div className='container'>
-                {title && <h1 className='title'>{title}</h1>}
+            <div className='container d-flex align-items-center justify-content-between'>
+                <h1 className='title text-white'>{title || ''}</h1>
+                <InfoBox />
             </div>
-            <div>flights component</div>
         </div>
     );
 };

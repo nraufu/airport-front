@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import sky from '../../assets/images/blue-sky.jpg';
 import ImageLibrary from '../../parts/Gallery/Gallery';
 import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
@@ -33,7 +32,7 @@ const Home = () => {
 
     return (
         <Fragment>
-            <Banner img={sky} className='hero' />
+            <Banner />
 
             <div
                 className='container spacing-lg'
