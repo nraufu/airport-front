@@ -1,11 +1,15 @@
 import React from 'react';
-import bannerImg from '../../assets/images/flying.jpg';
+import classnames from 'classnames';
 import InfoBox from '../Info-Box/InfoBox';
 
-const Banner = ({ title }) => {
+const Banner = ({ title, bannerImg, classNames }) => {
+    const bannerClass = classnames('banner', {
+        [classNames]: classNames,
+    });
+
     return (
         <div
-            className='banner'
+            className={bannerClass}
             style={{ backgroundImage: `url(${bannerImg})` }}
         >
             <div className='container d-flex align-items-center justify-content-between'>

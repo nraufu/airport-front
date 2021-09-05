@@ -4,6 +4,7 @@ import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
 import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
+import bannerImg from '../../assets/images/flying.jpg';
 
 const Home = () => {
     const services = [
@@ -32,7 +33,7 @@ const Home = () => {
 
     return (
         <Fragment>
-            <Banner />
+            <Banner bannerImg={bannerImg} classNames='hero' />
 
             <div
                 className='container spacing-lg'

@@ -1,14 +1,12 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import Banner from '../../components/Banner/Banner';
 import Footer from '../../parts/Footer/Footer';
+import bannerImg from '../../assets/images/airplane-wing.jpg';
 
 const Weather = () => {
-    const notify = () => toast('weather updated successfully');
-
     return (
         <>
-            <button onClick={notify}>Notify!</button>
-            <ToastContainer />
+            <Banner title='weather' bannerImg={bannerImg} />
             <Footer />
         </>
     );
