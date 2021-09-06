@@ -8,6 +8,7 @@ import bannerImg from '../../assets/images/flying.jpg';
 import newsImg from '../../assets/images/blue-sky.jpg';
 import News from '../../components/News/News';
 import Title from '../../components/UI/Title/Title';
+import TopicBox from '../../components/Topic-Box/TopicBox';
 
 const Home = () => {
     const services = [
@@ -79,6 +80,10 @@ const Home = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <div className='container d-block'>
+                <TopicBox />
             </div>
 
             <VisitRwanda />
