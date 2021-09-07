@@ -9,6 +9,8 @@ import newsImg from '../../assets/images/blue-sky.jpg';
 import News from '../../components/News/News';
 import Title from '../../components/UI/Title/Title';
 import TopicBox from '../../components/Topic-Box/TopicBox';
+import image1 from '../../assets/images/kigali-duty-free.jpg';
+import image2 from '../../assets/images/kigali-airport-lounge.jpg';
 
 const Home = () => {
     const services = [
@@ -56,6 +58,23 @@ const Home = () => {
         },
     ];
 
+    const topics = [
+        {
+            title: 'Duty Free && Shop',
+            description:
+                'Whether you’re travelling or dropping off someone, you can always make time for a spot of shopping and a tasty treat.',
+            img: image1,
+            position: 'right',
+        },
+        {
+            title: 'Getting Around',
+            description:
+                'Spend Time around the airport discovering our airport nice premises and room where you can spend time waiting for your flight',
+            img: image2,
+            position: 'left',
+        },
+    ];
+
     return (
         <Fragment>
             <Banner bannerImg={bannerImg} classNames='hero' />
@@ -82,16 +101,25 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='container d-block'>
-                <TopicBox />
+            <div className='container'>
+                <div className='row'>
+                    {topics.map((topic, index) => (
+                        <div className='col-12' key={index}>
+                            <TopicBox {...topic} />
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <VisitRwanda />
+
             <div className='spacing-md'>
                 <Title name='Latest News' />
                 <News data={news} />
             </div>
+
             <ImageLibrary />
+
             <Footer />
         </Fragment>
     );

@@ -21,6 +21,11 @@
             padding: 0 0 5rem;
             float: left;
         }
+
+        &--left {
+            padding: 0 0 5rem;
+            float: right;
+        }
     }
 
     &__content {
@@ -37,6 +42,11 @@
             right: 0;
         }
 
+        &--left {
+            bottom: 0;
+            left: 0;
+        }
+
         h2 {
             font-size: 3.5rem;
             color: $primary;
@@ -46,16 +56,27 @@
         p {
             font-size: 1.4rem;
             line-height: 2.6rem;
+            margin: 1.5rem 0;
         }
 
         &__button-list {
             list-style: none;
             margin: 0;
             padding: 0;
-        }
 
-        li {
-            display: inline-block;
+            li {
+                display: inline-block;
+            }
+
+            .btn-link {
+                display: inline-block;
+                text-decoration: none;
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+                font-size: 1.4rem;
+                color: $white;
+                background-color: $primary;
+            }
         }
     }
 }
