@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
 import NavItem from './NavItem';
 
-const Navbar = () => (
+const Navbar = ({ isAuthenticated }) => (
     <nav className='navbar navbar-expand-lg'>
         <div className='container'>
             <NavLink className='navbar-brand' to='/'>
@@ -22,18 +22,22 @@ const Navbar = () => (
                 <span className='navbar-toggler-icon' />
             </button>
 
-            <div
-                className='collapse navbar-collapse align-self-end'
-                id='navbar'
-            >
-                <ul className='navbar-nav'>
-                    <NavItem link='/' exact label='Home' />
-                    <NavItem link='/schedules' label='Flight Schedules' />
-                    <NavItem link='/services' label='Services' />
-                    <NavItem link='/weather' label='Weather' />
-                    <NavItem link='/covid' label='Covid-19' />
-                </ul>
-            </div>
+            {isAuthenticated ? (
+                <p>Admin</p>
+            ) : (
+                <div
+                    className='collapse navbar-collapse align-self-end'
+                    id='navbar'
+                >
+                    <ul className='navbar-nav'>
+                        <NavItem link='/' exact label='Home' />
+                        <NavItem link='/schedules' label='Flight Schedules' />
+                        <NavItem link='/services' label='Services' />
+                        <NavItem link='/weather' label='Weather' />
+                        <NavItem link='/covid' label='Covid-19' />
+                    </ul>
+                </div>
+            )}
         </div>
     </nav>
 );

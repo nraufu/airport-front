@@ -63,10 +63,25 @@ a {
     &:disabled {
         cursor: not-allowed;
     }
+
+    align-items: center;
+    &__icon + span {
+        margin-left: 0.6rem;
+    }
 }
 
 /* --------------------- Toast --------------------- */
 .toastBody {
     font-size: 1.6rem;
     font-family: 'Poppins', sans-serif;
+}
+
+/* --------------------- title --------------------- */
+.title {
+    &-secondary {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $gray-200;
+    }
 }
