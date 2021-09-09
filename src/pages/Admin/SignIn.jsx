@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateObject, checkValidity } from '../../shared/utility';
 import Spinner from '../../components/Spinner/Spinner';
@@ -6,8 +6,9 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import logo from '../../assets/images/logo.png';
 import { login } from '../../store/actions/login';
+import { toast } from 'react-toastify';
 
-const SignIn = ({ onLogin }) => {
+const SignIn = ({ onLogin, history }) => {
     const [loginForm, setLoginForm] = useState({
         username: {
             elementType: 'input',
@@ -32,8 +33,18 @@ const SignIn = ({ onLogin }) => {
             touched: false,
         },
     });
-    const [formIsValid, setFormIsValid] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [formIsValid, setFormIsValid] = useState();
+    const [isLoading, setIsLoading] = useState();
+
+    //cleanup states
+    useEffect(() => {
+        setFormIsValid(false);
+        setIsLoading(false);
+        return () => {
+            setFormIsValid();
+            setIsLoading();
+        };
+    }, []);
 
     const inputChangedHandler = (event, inputIdentifier) => {
         const updatedFormElement = updateObject(loginForm[inputIdentifier], {
@@ -67,12 +78,21 @@ const SignIn = ({ onLogin }) => {
 
     const loginHandler = async () => {
         const { username, password } = loginForm;
-        console.log(username.value, password.value);
+
         setIsLoading(true);
-        await onLogin({
+
+        const result = await onLogin({
             username: username.value,
             password: password.value,
         });
+
+        if (result.message) {
+            toast.success('Logged In Successfully');
+            history.push('/dashboard');
+        } else {
+            toast.error('Email or password is Incorrect');
+        }
+
         setIsLoading(false);
     };
 

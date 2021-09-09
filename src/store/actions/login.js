@@ -1,13 +1,21 @@
 import apiCall from '../../utils/apiCall';
+import { saveToken } from '../../utils/authentication';
 
 export const login = (data) => async (dispatch) => {
-    const response = await apiCall.post(
-        `${process.env.REACT_APP_URL}/admin/login`,
-        data
-    );
+    try {
+        const response = await apiCall.post('/admin/login', data);
 
-    dispatch({
-        type: 'LOGIN_SUCCESS',
-        payload: response.data.data,
-    });
+        saveToken( response.data.data.token );
+        
+        dispatch({
+            type: 'LOGIN_SUCCESS',
+            payload: response.data.data,
+        });
+
+        return response.data.data;
+
+    } catch (error) {
+        return error;
+    }
+    
 };

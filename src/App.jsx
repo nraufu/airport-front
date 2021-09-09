@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Schedules from './pages/Schedules/Schedules';
@@ -12,6 +13,7 @@ import Dashboard from './pages/Admin/Dashboard';
 const App = () => {
     return (
         <Fragment>
+            <ToastContainer bodyClassName='toastBody' />
             <Header />
             <Switch>
                 <Route path='/schedules' component={Schedules} />
