@@ -5,6 +5,8 @@ import AddableInput from '../../components/UI/Input/AddableInput';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Table from '../../components/UI/Table/Table';
+import ActionButtons from '../../components/UI/Table/ActionButtons';
+import ConfirmationBox from '../../components/UI/AlertBox/ConfirmationBox';
 
 const Airlines = () => {
     const [name, setName] = useState('');
@@ -80,21 +82,43 @@ const Airlines = () => {
                 </Container>
             </AccordionCard>
 
-            <span className='mt-5' />
+            <span className='d-block my-5' />
 
             <Table
+                className='table-sm'
                 columns={[
-                    { label: 'Airline', path: 'logoUrl' },
+                    {
+                        label: 'Airline',
+                        path: 'logoUrl',
+                        content: (item) => (
+                            <img
+                                src={item.logoUrl}
+                                alt='logo'
+                                className='logo-image'
+                            />
+                        ),
+                    },
                     { label: 'Name', path: 'name' },
                     { label: 'Country', path: 'country' },
                     {
                         label: 'Flights',
+                        path: 'flights',
+                    },
+                    {
+                        label: 'action',
                         content: (item) => (
-                            <ul>
-                                {item.flights.map((flight) => (
-                                    <li>{flight}</li>
-                                ))}
-                            </ul>
+                            <ActionButtons
+                                onView={() => item}
+                                onEdit={() => item}
+                                onDelete={() =>
+                                    ConfirmationBox({
+                                        title: 'Confirm deletion',
+                                        message: `Are you sure you want to delete ${item.name} ?`,
+                                        onYes: () => item,
+                                    })
+                                }
+                                disable={[]} //buttons to disable
+                            />
                         ),
                     },
                 ]}

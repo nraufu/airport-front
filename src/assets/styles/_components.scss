@@ -164,3 +164,154 @@
         background: $primary;
     }
 }
+
+/* --------------------- table --------------------- */
+table {
+    background-color: $white;
+    font-size: 1.5rem;
+
+    th,
+    td {
+        padding: 1rem;
+    }
+
+    td {
+        color: $gray-700;
+        font-weight: 300;
+    }
+
+    &.bordered {
+        border: 1px solid $gray-100;
+    }
+}
+
+/* --------------------- Data action Buttons --------------------- */
+.data-action-buttons {
+    border: 1px solid $gray-300;
+    background-color: $white;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &:hover {
+        box-shadow: 0 0 6px rgba($color: rgb(56, 56, 56), $alpha: 0.15);
+        border-color: $white;
+    }
+
+    @include border-radius;
+
+    .btn {
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        flex: 0 0 33.333%;
+        text-align: center;
+        justify-content: center;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $primary;
+            color: $white !important;
+        }
+    }
+}
+
+/**
+ * \--------------------------------------------------------------------\
+ * Alert Box
+ * /--------------------------------------------------------------------/
+ */
+
+.alert-box-wrapper {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba($black, 0.4);
+    z-index: 99999;
+    transition: all 0.5s;
+
+    &.show {
+        display: block;
+    }
+}
+
+.alert-box {
+    position: relative;
+    text-align: center;
+    max-width: 480px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba($black, 0.2);
+    overflow: hidden;
+    animation: fadeIn ease 0.3s;
+    border-radius: 0.5rem;
+
+    $alert: &;
+
+    &__header {
+        padding: 1rem;
+        width: 100%;
+        border-bottom: 1px solid $gray-300;
+        font-weight: 600;
+        opacity: 0.8;
+        font-size: 1.4rem;
+
+        .icon {
+            font-size: 1.4rem;
+            margin-right: 0.4rem;
+            color: inherit;
+        }
+    }
+
+    &__content {
+        padding: 1.5rem;
+        color: inherit;
+        font-size: 0.4rem;
+    }
+
+    // Variations
+    &--default {
+        #{$alert}__header {
+            background-color: darken($color: $gray-200, $amount: 2);
+            border-bottom-color: darken($color: $gray-300, $amount: 3);
+        }
+    }
+
+    &--success {
+        color: $white;
+        #{$alert}__header {
+            background-color: darken($color: $success, $amount: 3);
+            border-bottom-color: darken($color: $success, $amount: 7);
+        }
+    }
+
+    &--error {
+        color: $white;
+        #{$alert}__header {
+            background-color: darken($color: $danger, $amount: 2);
+            border-bottom-color: darken($color: $danger, $amount: 10);
+        }
+    }
+
+    &--warning {
+        color: darken($color: $warning, $amount: 36);
+        #{$alert}__header {
+            background-color: darken($color: $warning, $amount: 4);
+            border-bottom-color: darken($color: $warning, $amount: 8);
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
