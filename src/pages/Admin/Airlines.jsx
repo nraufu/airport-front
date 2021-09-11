@@ -85,7 +85,7 @@ const Airlines = () => {
             <span className='d-block my-5' />
 
             <Table
-                className='table-sm'
+                className='table-sm theme-light bordered'
                 columns={[
                     {
                         label: 'Airline',

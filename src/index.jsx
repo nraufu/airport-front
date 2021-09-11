@@ -15,6 +15,8 @@ import store from './store';
 import './assets/styles/main.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import './assets/icons/linearicons/style.css';
+import './assets/icons/fontisto/style.css';
+import './assets/icons/line-icons/linear-icons-regular.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(

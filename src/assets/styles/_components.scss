@@ -178,10 +178,17 @@ table {
     td {
         color: $gray-700;
         font-weight: 300;
+        vertical-align: middle;
     }
 
     &.bordered {
         border: 1px solid $gray-100;
+    }
+
+    &.theme-light {
+        th {
+            background: linear-gradient(to top, rgb(243, 246, 249), $white);
+        }
     }
 }
 
