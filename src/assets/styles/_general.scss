@@ -65,8 +65,8 @@ a {
     }
 
     align-items: center;
-    &__icon + span {
-        margin-left: 0.6rem;
+    &__icon {
+        margin-right: 0.6rem;
     }
 }
 
@@ -82,6 +82,12 @@ a {
         font-size: 2.5rem;
         text-transform: uppercase;
         padding-bottom: 1rem;
+        border-bottom: 1px solid $gray-200;
+    }
+
+    &-tertiary {
+        font-size: 1.6rem;
+        padding-bottom: 0.5rem;
         border-bottom: 1px solid $gray-200;
     }
 }

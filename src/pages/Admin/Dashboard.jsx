@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Airlines from './Airlines';
+import Airlines from './Airlines/Airlines';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');

@@ -14,26 +14,26 @@ class ApiCall {
 			return res;
 		};
 
-		this.post = ( url, data ) => {
-			const res = axiosInstance.post( url, data ).catch( ( error ) => {
+		this.post = ( url, data, options ) => {
+			const res = axiosInstance.post( url, data, options ).catch( ( error ) => {
 				return this.errorResponse( error );
 			} );
 			return res;
 		};
-		this.put = ( url, data ) => {
-			const res = axiosInstance.put( url, data ).catch( ( error ) => {
+		this.put = ( url, data, options ) => {
+			const res = axiosInstance.put( url, data, options ).catch( ( error ) => {
 				return this.errorResponse( error );
 			} );
 			return res;
 		};
-		this.patch = ( url, data ) => {
-			const res = axiosInstance.patch( url, data ).catch( ( error ) => {
+		this.patch = ( url, data, options ) => {
+			const res = axiosInstance.patch( url, data, options ).catch( ( error ) => {
 				return this.errorResponse( error );
 			} );
 			return res;
 		};
-		this.delete = ( url, data ) => {
-			const res = axiosInstance.delete( url, data ).catch( ( error ) => {
+		this.delete = ( url, data, options ) => {
+			const res = axiosInstance.delete( url, data, options ).catch( ( error ) => {
 				return this.errorResponse( error );
 			} );
 			return res;

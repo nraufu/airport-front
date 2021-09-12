@@ -1,3 +1,4 @@
+import { success } from '../../utils/actions';
 import apiCall from '../../utils/apiCall';
 import { saveToken } from '../../utils/authentication';
 
@@ -8,7 +9,7 @@ export const login = (data) => async (dispatch) => {
         saveToken( response.data.data.token );
         
         dispatch({
-            type: 'LOGIN_SUCCESS',
+            type: success('LOGIN'),
             payload: response.data.data,
         });
 

@@ -59,7 +59,7 @@ function AlertBox(props) {
                     <p className='mb-4'>{message}</p>
 
                     {btnActions && (
-                        <div className='alert-box__content-buttons d-flex flex-wrap justify-content-center'>
+                        <div className='alert-box__content-buttons d-flex flex-wrap justify-content-center align-items-center'>
                             {btnActions.map((btn, index) => (
                                 <Button
                                     key={index}

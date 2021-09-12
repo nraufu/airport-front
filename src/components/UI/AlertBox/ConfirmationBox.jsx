@@ -8,7 +8,7 @@ function ConfirmationBox({ onYes, onNo, title, message }) {
         isDefault: true,
         btnActions: [
             {
-                className: 'btn btn-success mr-3  px-4',
+                className: 'btn btn-success m-3 px-4',
                 label: 'Yes',
                 onClick: () => {
                     if (onYes) {
