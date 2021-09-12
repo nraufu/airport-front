@@ -1,3 +1,5 @@
+import jwtDecode from 'jwt-decode';
+
 const getToken = () => {
 	return localStorage.getItem( 'token' );
 };
@@ -10,4 +12,13 @@ const saveToken = ( token ) => {
 	localStorage.setItem( 'token', token );
 };
 
-export { deleteToken, getToken, saveToken };
+const getAdmin = () => {
+	try {
+		const token = getToken();
+		return jwtDecode( token );
+	} catch (error) {
+		return null;
+	}
+};
+
+export { deleteToken, getToken, saveToken, getAdmin };

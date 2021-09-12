@@ -10,20 +10,20 @@ import Weather from './pages/Weather/Weather';
 import SignIn from './pages/Admin/SignIn';
 import Dashboard from './pages/Admin/Dashboard';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
-import { getToken } from './utils/authentication';
+import { getAdmin } from './utils/authentication';
 
 const App = () => {
-    const [token, setToken] = useState();
+    const [admin, setAdmin] = useState();
 
     useEffect(() => {
-        const token = getToken();
-        setToken(token);
+        const admin = getAdmin();
+        setAdmin(admin);
     }, []);
 
     return (
         <>
             <ToastContainer bodyClassName='toastBody' />
-            <Header isAuthenticated={token} />
+            <Header isAuthenticated={admin} />
             <Switch>
                 <Route path='/schedules' component={Schedules} />
                 <Route path='/services' component={Services} />

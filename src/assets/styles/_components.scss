@@ -223,11 +223,7 @@ table {
     }
 }
 
-/**
- * \--------------------------------------------------------------------\
- * Alert Box
- * /--------------------------------------------------------------------/
- */
+/* --------------------- Alert Box --------------------- */
 
 .alert-box-wrapper {
     display: none;
@@ -320,5 +316,43 @@ table {
     }
     100% {
         opacity: 1;
+    }
+}
+
+/* --------------------- Admin tab --------------------- */
+
+.admin-tab {
+    align-self: flex-end;
+
+    .dropdown {
+        &-toggle {
+            font-size: 1.4rem;
+
+            &,
+            &:focus {
+                background: none;
+                outline: none;
+                border: none;
+                box-shadow: none;
+            }
+
+            i {
+                display: inline-block;
+                width: 3rem;
+                height: 3rem;
+                line-height: 3rem;
+                text-align: center;
+                font-size: 1.4rem;
+                border-radius: 50%;
+                background: $white;
+                border: 1px solid $gray-600;
+            }
+        }
+
+        &-menu {
+            border-radius: 0;
+            margin-top: -5px;
+            margin-left: 10px;
+        }
     }
 }

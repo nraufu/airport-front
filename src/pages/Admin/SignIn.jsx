@@ -8,7 +8,7 @@ import logo from '../../assets/images/logo.png';
 import { login } from '../../store/actions/login';
 import { toast } from 'react-toastify';
 
-const SignIn = ({ onLogin, history }) => {
+const SignIn = ({ onLogin }) => {
     const [loginForm, setLoginForm] = useState({
         username: {
             elementType: 'input',
@@ -88,7 +88,7 @@ const SignIn = ({ onLogin, history }) => {
 
         if (result.message) {
             toast.success('Logged In Successfully');
-            history.push('/dashboard');
+            window.location.href = '/dashboard';
         } else {
             toast.error('Email or password is Incorrect');
         }

@@ -1,6 +1,8 @@
 import React from 'react';
+import { Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
+import { deleteToken } from '../../utils/authentication';
 import NavItem from './NavItem';
 
 const Navbar = ({ isAuthenticated }) => (
@@ -23,7 +25,22 @@ const Navbar = ({ isAuthenticated }) => (
             </button>
 
             {isAuthenticated ? (
-                <p>Admin</p>
+                <Dropdown className='admin-tab'>
+                    <Dropdown.Toggle
+                        size='sm'
+                        variant='bg-light'
+                        id='dropdown-basic'
+                    >
+                        <i className='lnr lnr-user m-2'></i>
+                        <span className='text'>Admin</span>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href='/' onClick={() => deleteToken()}>
+                            Logout
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             ) : (
                 <div
                     className='collapse navbar-collapse align-self-end'

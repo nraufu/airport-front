@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { getToken } from '../../utils/authentication';
+import { getAdmin } from '../../utils/authentication';
 
 const ProtectedRoute = ({ path, component: Component, render, ...rest }) => {
     return (
         <Route
             {...rest}
             render={(props) => {
-                if (!getToken())
+                if (!getAdmin())
                     return (
                         <Redirect
                             to={{
