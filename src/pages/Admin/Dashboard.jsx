@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Airlines from './Airlines/Airlines';
+import Arrivals from './Arrivals/Arrivals';
+import Departures from './Departures/Departures';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -69,8 +71,8 @@ const Dashboard = () => {
             <main className='dashboard-view'>
                 {activeTab === 'dashboard' && <p>Dashboard</p>}
                 {activeTab === 'airlines' && <Airlines />}
-                {activeTab === 'departures' && <p>Departures</p>}
-                {activeTab === 'arrivals' && <p>Arrivals</p>}
+                {activeTab === 'departures' && <Departures />}
+                {activeTab === 'arrivals' && <Arrivals />}
                 {activeTab === 'news' && <p>News</p>}
             </main>
         </div>
