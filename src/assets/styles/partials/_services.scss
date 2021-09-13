@@ -1,0 +1,53 @@
+.service-item {
+    margin-bottom: 5rem;
+
+    &__img {
+        padding-bottom: 4rem;
+
+        img {
+            box-shadow: -2rem 2rem 0 rgba($primary, 0.9);
+        }
+
+        &.img-right {
+            img {
+                box-shadow: 2rem 2rem 0 rgba($primary, 0.9);
+            }
+        }
+    }
+    &__title {
+        font-size: 2.8rem;
+        color: $black;
+    }
+
+    p {
+        padding: 2.5rem 0;
+        font-weight: 300;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+
+    &__details {
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        text-decoration: none;
+    }
+
+    &__content {
+        ul {
+            li {
+                font-size: 1.4rem;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    &__title {
+        font-size: 2.4rem;
+    }
+
+    p {
+        padding: 1.5rem 0;
+    }
+}

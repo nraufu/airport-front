@@ -7,10 +7,12 @@ import AddableInput from '../../../components/UI/Input/AddableInput';
 import Input from '../../../components/UI/Input/Input';
 import Button from '../../../components/UI/Button/Button';
 import Table from '../../../components/UI/Table/Table';
+import Select from '../../../components/UI/Select/Select';
 import ActionButtons from '../../../components/UI/Table/ActionButtons';
 import ConfirmationBox from '../../../components/UI/AlertBox/ConfirmationBox';
 import { ViewAirlineModal, EditAirlineModal } from './modals';
 import { airlineActions } from '../../../store/actions/airlines';
+import { countriesList } from '../../../components/UI/countries';
 
 const Airlines = ({
     airlines,
@@ -124,16 +126,14 @@ const Airlines = ({
                         </Col>
 
                         <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='country'
-                                name='country'
-                                valueType='Country'
+                            <Select
+                                label='Country'
                                 value={country}
-                                elementConfig={{
-                                    type: 'select',
-                                    placeholder: 'Country',
-                                }}
                                 onChange={(e) => setCountry(e.target.value)}
+                                options={countriesList.map((country) => ({
+                                    value: country.name,
+                                    label: country.name,
+                                }))}
                             />
                         </Col>
 
