@@ -1,5 +1,5 @@
 .service-item {
-    margin-bottom: 5rem;
+    margin-bottom: 5.5rem;
 
     &__img {
         padding-bottom: 4rem;
@@ -33,6 +33,14 @@
     }
 
     &__content {
+        &.pl {
+            padding-left: 2rem;
+        }
+
+        &.pr {
+            padding-right: 2rem;
+        }
+
         ul {
             li {
                 font-size: 1.4rem;
