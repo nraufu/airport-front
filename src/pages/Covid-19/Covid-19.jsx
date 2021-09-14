@@ -3,6 +3,7 @@ import Banner from '../../components/Banner/Banner';
 import Footer from '../../parts/Footer/Footer';
 import bannerImg from '../../assets/images/corona-virus.jpg';
 import covidImg from '../../assets/images/covid.png';
+import infoFile from '../../assets/files/info_note.pdf';
 
 const Covid = () => {
     return (
@@ -38,8 +39,9 @@ const Covid = () => {
 
                     <div className='col-md-4 mb-5'>
                         <a
-                            href='https://rbc.gov.rw/travel/'
+                            href={infoFile}
                             className='btn btn-primary btn-lg text-white'
+                            download='info-passenger.pdf'
                         >
                             Info Note for passengers
                         </a>
@@ -56,7 +58,7 @@ const Covid = () => {
                         authorities.
                     </p>
 
-                    <img src={covidImg} className='img-fluid' alt='covid-img' />
+                    <img src={covidImg} className='img-fluid' alt='img' />
                 </div>
             </div>
             <Footer />
