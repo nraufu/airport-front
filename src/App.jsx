@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Schedules from './pages/Schedules/Schedules';
@@ -11,30 +12,58 @@ import SignIn from './pages/Admin/SignIn';
 import Dashboard from './pages/Admin/Dashboard';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import { getAdmin } from './utils/authentication';
+import Loading from './components/Loading/Loading';
 
-const App = () => {
+const App = ({ location }) => {
     const [admin, setAdmin] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+
+    const currentKey = location.pathname.split('/')[1] || '/';
+    const timeout = { enter: 300, exit: 200 };
 
     useEffect(() => {
         const admin = getAdmin();
         setAdmin(admin);
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
     }, []);
 
-    return (
+    let App = (
         <>
             <ToastContainer bodyClassName='toastBody' />
             <Header isAuthenticated={admin} />
-            <Switch>
-                <Route path='/schedules' component={Schedules} />
-                <Route path='/services' component={Services} />
-                <Route path='/weather' component={Weather} />
-                <Route path='/covid' component={Covid} />
-                <Route path='/login' component={SignIn} />
-                <ProtectedRoute path='/dashboard' component={Dashboard} />
-                <Route exact path='/' component={Home} />
-            </Switch>
+
+            <TransitionGroup component='main' className='page-main'>
+                <CSSTransition
+                    key={currentKey}
+                    timeout={timeout}
+                    classNames='fade'
+                    appear
+                >
+                    <Switch location={location}>
+                        <Route path='/schedules' component={Schedules} />
+                        <Route path='/services' component={Services} />
+                        <Route path='/weather' component={Weather} />
+                        <Route path='/covid' component={Covid} />
+                        <Route path='/login' component={SignIn} />
+                        <ProtectedRoute
+                            path='/dashboard'
+                            component={Dashboard}
+                        />
+                        <Route exact path='/' component={Home} />
+                    </Switch>
+                </CSSTransition>
+            </TransitionGroup>
         </>
     );
+
+    if (isLoading) {
+        App = <Loading />;
+    }
+
+    return App;
 };
 
-export default App;
+export default withRouter(App);

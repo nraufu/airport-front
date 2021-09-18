@@ -16,11 +16,7 @@ const TopicBox = ({ position, img, title, description }) => {
 
                 <ul className='topic-box__content__button-list'>
                     <li>
-                        <a
-                            href='https://www.maltairport.com/visitor/shop-dine/shopping/'
-                            title='Shopping'
-                            className='btn-link'
-                        >
+                        <a href='/#' title='Shopping' className='btn-link'>
                             View More
                         </a>
                     </li>
