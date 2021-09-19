@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { withRouter, Switch, Route } from 'react-router-dom';
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/Header/Header';
@@ -55,6 +55,7 @@ const App = ({ location }) => {
                             component={Dashboard}
                         />
                         <Route exact path='/' component={Home} />
+                        <Redirect to='/not-found' />
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>
