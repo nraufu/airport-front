@@ -1,0 +1,100 @@
+#notfound {
+    position: relative;
+    height: 80vh;
+
+    .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        max-width: 46rem;
+        width: 100%;
+        text-align: center;
+        line-height: 1.4;
+
+        h2 {
+            font-size: 33px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+            margin-top: 2.5rem;
+        }
+
+        p {
+            font-size: 1.6rem;
+            color: $black;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+        }
+
+        a {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: $primary;
+            border: none;
+            border-radius: 4rem;
+            color: $white;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            -webkit-transition: 0.2s all;
+            transition: 0.5s all;
+
+            &:hover {
+                background-color: rgba($primary, 0.8);
+            }
+        }
+    }
+
+    .notfound-404 {
+        position: relative;
+        width: 18rem;
+        height: 18rem;
+        margin: 0px auto 5rem;
+
+        > div:first-child {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #ffa200;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            border: 5px dashed $black;
+            border-radius: 5px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: -5px;
+                right: -5px;
+                bottom: -5px;
+                top: -5px;
+                -webkit-box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
+                box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
+                border-radius: 5px;
+            }
+        }
+
+        h1 {
+            color: $black;
+            font-weight: 700;
+            margin: 0;
+            font-size: 9rem;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            left: 50%;
+            text-align: center;
+            height: 4rem;
+            line-height: 4rem;
+        }
+    }
+}

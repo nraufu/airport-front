@@ -4,7 +4,7 @@ import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
 import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
-import bannerImg from '../../assets/images/flying.jpg';
+import bannerImg from '../../assets/images/airplane-wing.jpg';
 import newsImg from '../../assets/images/blue-sky.jpg';
 import News from '../../components/News/News';
 import Title from '../../components/UI/Title/Title';
