@@ -6,6 +6,10 @@
 
 .news {
     &-item {
+        border: 1px solid $gray-200;
+        border-radius: 0 0 1rem 1rem;
+        overflow: hidden;
+
         &--picture {
             transition: opacity 0.5s;
 
@@ -27,6 +31,11 @@
         &--title {
             font-size: 24px;
             color: $dark;
+        }
+
+        &--content {
+            padding: 1rem;
+            box-shadow: 0 0.5rem 0.5rem $gray-100;
         }
 
         @include media-breakpoint-down(md) {
