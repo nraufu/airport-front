@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
+import Clock from '../Clock/Clock';
 
 const Header = ({ isAuthenticated }) => {
     return (
@@ -43,6 +44,8 @@ const Header = ({ isAuthenticated }) => {
                                     </a>
                                 </li>
                             </ul>
+
+                            <Clock />
                         </div>
                     </div>
                 </div>
