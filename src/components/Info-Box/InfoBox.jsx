@@ -4,38 +4,38 @@ import ContentRow from './ContentRow';
 import arrivalIcon from '../../assets/images/ico_arrivals.png';
 import departureIcon from '../../assets/images/ico_departures.png';
 
-const InfoBox = () => {
+const InfoBox = ({ departures, arrivals }) => {
     const [activeTab, setActiveTab] = useState('departures');
 
-    const departures = [
-        {
-            details: 'London-Stansted',
-            flightno: 'LS 1520',
-            time: '12:00',
-            status: 'On Time',
-        },
-        {
-            details: 'London-Stansted',
-            flightno: 'LS 1520',
-            time: '12:00',
-            status: 'On Time',
-        },
-    ];
+    // const departures = [
+    //     {
+    //         details: 'London-Stansted',
+    //         flightno: 'LS 1520',
+    //         time: '12:00',
+    //         status: 'On Time',
+    //     },
+    //     {
+    //         details: 'London-Stansted',
+    //         flightno: 'LS 1520',
+    //         time: '12:00',
+    //         status: 'On Time',
+    //     },
+    // ];
 
-    const arrivals = [
-        {
-            details: 'Nairobi',
-            flightno: 'LS 1520',
-            time: '12:00',
-            status: 'On Time',
-        },
-        {
-            details: 'Doha',
-            flightno: 'LS 1520',
-            time: '12:00',
-            status: 'On Time',
-        },
-    ];
+    // const arrivals = [
+    //     {
+    //         details: 'Nairobi',
+    //         flightno: 'LS 1520',
+    //         time: '12:00',
+    //         status: 'On Time',
+    //     },
+    //     {
+    //         details: 'Doha',
+    //         flightno: 'LS 1520',
+    //         time: '12:00',
+    //         status: 'On Time',
+    //     },
+    // ];
 
     return (
         <div className='info-box'>
@@ -58,7 +58,11 @@ const InfoBox = () => {
 
                 <div className='content'>
                     <div className='content-row titles'>
-                        <span className='details'>DESTINATION</span>
+                        <span className='details'>
+                            {activeTab === 'departures'
+                                ? 'DESTINATION'
+                                : 'ORIGIN'}
+                        </span>
                         <span className='flightno'>FLIGHT</span>
                         <span className='time'>TIME</span>
                         <span className='status'>STATUS</span>
@@ -66,12 +70,24 @@ const InfoBox = () => {
 
                     {activeTab === 'departures' &&
                         departures.map((departure, index) => (
-                            <ContentRow key={index} {...departure} />
+                            <ContentRow
+                                key={index}
+                                details={departure.destination}
+                                flight={departure.flight}
+                                time={departure.scheduled}
+                                status={departure.status}
+                            />
                         ))}
 
                     {activeTab === 'arrivals' &&
                         arrivals.map((arrival, index) => (
-                            <ContentRow key={index} {...arrival} />
+                            <ContentRow
+                                key={index}
+                                details={arrival.origin}
+                                flight={arrival.flight}
+                                time={arrival.scheduled}
+                                status={arrival.status}
+                            />
                         ))}
                 </div>
 

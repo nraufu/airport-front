@@ -1,16 +1,46 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import airplaneWing from '../../assets/images/airplane-wing.jpg';
 import Footer from '../../parts/Footer/Footer';
 import Table from '../../components/UI/Table/Table';
-import {
-    columnsDepartues,
-    dataDepartures,
-    columnsArrivals,
-    dataArrivals,
-} from './data';
+import { arrivalActions } from '../../store/actions/arrivals';
+import { departureActions } from '../../store/actions/departures';
 
-const Schedules = () => {
+const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
     const [activeTab, setActiveTab] = useState('departures');
+
+    useEffect(() => {
+        loadArrivals();
+        loadDepartures();
+    }, [loadArrivals, loadDepartures]);
+
+    const columnsDepartures = [
+        {
+            label: 'AIRLINE',
+            path: 'airlineLogo',
+            content: (item) => (
+                <img src={item.airlineLogo} alt='logo' className='logo-image' />
+            ),
+        },
+        { label: 'FLIGHT', path: 'flight' },
+        { label: 'TO', path: 'destination' },
+        { label: 'SCHEDULED', path: 'scheduled' },
+        { label: 'STATUS', path: 'status' },
+    ];
+
+    const columnsArrivals = [
+        {
+            label: 'AIRLINE',
+            path: 'airlineLogo',
+            content: (item) => (
+                <img src={item.airlineLogo} alt='logo' className='logo-image' />
+            ),
+        },
+        { label: 'FLIGHT', path: 'flight' },
+        { label: 'FROM', path: 'origin' },
+        { label: 'SCHEDULED', path: 'scheduled' },
+        { label: 'STATUS', path: 'status' },
+    ];
 
     return (
         <>
@@ -52,8 +82,8 @@ const Schedules = () => {
                                 className='tab-content active'
                             >
                                 <Table
-                                    columns={columnsDepartues}
-                                    data={dataDepartures}
+                                    columns={columnsDepartures}
+                                    data={departures}
                                 />
                             </div>
                         )}
@@ -65,7 +95,7 @@ const Schedules = () => {
                             >
                                 <Table
                                     columns={columnsArrivals}
-                                    data={dataArrivals}
+                                    data={arrivals}
                                 />
                             </div>
                         )}
@@ -77,4 +107,16 @@ const Schedules = () => {
     );
 };
 
-export default Schedules;
+const mapStateToProps = ({ departuresState, arrivalsState }) => {
+    return {
+        arrivals: arrivalsState.arrivals,
+        departures: departuresState.departures,
+    };
+};
+
+const mapDispatchToProps = {
+    loadArrivals: arrivalActions.getAll,
+    loadDepartures: departureActions.getAll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Schedules);

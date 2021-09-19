@@ -1,4 +1,4 @@
-export const columnsDepartues = [
+export const columnsDepartures = [
     { label: 'AIRLINE', path: 'airline' },
     { label: 'FLIGHT', path: 'flight' },
     { label: 'TO', path: 'to' },
