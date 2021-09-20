@@ -14,6 +14,7 @@ import ProtectedRoute from './components/Auth/ProtectedRoute';
 import { getAdmin } from './utils/authentication';
 import Loading from './components/Loading/Loading';
 import NotFound from './pages/NotFound/NotFound';
+import News from './pages/News/News';
 
 const App = ({ location }) => {
     const [admin, setAdmin] = useState();
@@ -48,6 +49,7 @@ const App = ({ location }) => {
                         <Route path='/services' component={Services} />
                         <Route path='/weather' component={Weather} />
                         <Route path='/covid' component={Covid} />
+                        <Route path='/news' component={News} />
                         <Route path='/login' component={SignIn} />
                         <Route path='/not-found' component={NotFound} />
                         <ProtectedRoute

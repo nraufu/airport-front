@@ -1,12 +1,13 @@
 import _ from 'lodash';
 
-export function paginate(items, pageNumber, pageSize) {
+const paginate = (items, pageNumber, pageSize) => {
     const startIndex = (pageNumber - 1) * pageSize;
     return _(items).slice(startIndex).take(pageSize).value();
 }
 
 export const getPagedData = (filterCol, currentPage, sortColumn, searchQuery, data) => {
     let filtered = data;
+    
     if (searchQuery) {
         filtered = data.filter(item => item[filterCol].toLowerCase().includes(searchQuery.toLowerCase()));
     }

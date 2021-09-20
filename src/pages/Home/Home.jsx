@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import ImageLibrary from '../../parts/Gallery/Gallery';
 import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
@@ -6,11 +7,11 @@ import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 import bannerImg from '../../assets/images/airplane-wing.jpg';
 import newsImg from '../../assets/images/blue-sky.jpg';
-import News from '../../components/News/News';
 import Title from '../../components/UI/Title/Title';
 import TopicBox from '../../components/Topic-Box/TopicBox';
 import image1 from '../../assets/images/kigali-duty-free.jpg';
 import image2 from '../../assets/images/kigali-airport-lounge.jpg';
+import SingleNews from '../News/SingleNews';
 
 const Home = () => {
     const services = [
@@ -115,7 +116,22 @@ const Home = () => {
 
             <div className='spacing-md'>
                 <Title name='Latest News' />
-                <News data={news} />
+                <div className='container'>
+                    <div className='row'>
+                        {news.slice(0, 3).map((news, index) => (
+                            <SingleNews key={index} {...news} />
+                        ))}
+                    </div>
+                </div>
+
+                <div className='text-center'>
+                    <Link
+                        to='/news'
+                        className='btn btn-primary text-white mt-5 text-center py-2 px-4'
+                    >
+                        Read More
+                    </Link>
+                </div>
             </div>
 
             <ImageLibrary />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingleNews = ({ img, title, description }) => {
     return (
-        <div className='col-lg-4 col-md-6 col-12'>
+        <div className='col-lg-4 col-md-6 col-12 pb-30'>
             <div className='news-item'>
                 <a href='/#' className='d-block mb-3'>
                     <img
