@@ -382,7 +382,13 @@ table {
 
 /* --------------------- clock --------------------- */
 .clock {
-    font-size: 1.8rem;
     font-family: 'seven segment', sans-serif;
     font-weight: 600;
+    border: 1px solid $white;
+    border-radius: 0.2rem;
+    padding: 0 1rem;
+
+    span {
+        font-size: 1.6rem;
+    }
 }
