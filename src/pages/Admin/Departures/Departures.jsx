@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 import AccordionCard from '../../../components/Accordion/Accordion';
-import Input from '../../../components/UI/Input/Input';
-import Button from '../../../components/UI/Button/Button';
-import Table from '../../../components/UI/Table/Table';
-import ActionButtons from '../../../components/UI/Table/ActionButtons';
-import ConfirmationBox from '../../../components/UI/AlertBox/ConfirmationBox';
 import { ViewDepartureModal, EditDepartureModal } from './modals';
-import Select from '../../../components/UI/Select/Select';
 import { departureActions } from '../../../store/actions/departures';
 import { airlineActions } from '../../../store/actions/airlines';
+import {
+    Input,
+    Button,
+    Table,
+    Select,
+    ActionButtons,
+    ConfirmationBox,
+    SearchBox,
+} from '../../../components/UI';
+import Pagination from '../../../components/Pagination/Pagination';
+import { getPagedData } from '../../../utils/paginate';
 
 const Departures = ({
     airlines,
@@ -29,6 +34,9 @@ const Departures = ({
     const [scheduled, setScheduled] = useState('');
     const [status, setStatus] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [sortColumn, setSortColumn] = useState({});
 
     useEffect(() => {
         fetchDepartures();
@@ -108,6 +116,14 @@ const Departures = ({
             ),
         },
     ];
+
+    const { totalCount, pagedData } = getPagedData(
+        'airlineName',
+        currentPage,
+        sortColumn,
+        searchQuery,
+        departures
+    );
 
     return (
         <>
@@ -191,12 +207,31 @@ const Departures = ({
                 </Container>
             </AccordionCard>
 
-            <h6 className='title-tertiary my-5'>List</h6>
+            <div className='d-flex justify-content-between align-items-center table-header-count'>
+                <p className='count'>
+                    Showing <span className='text-primary'>{totalCount}</span>{' '}
+                    Departures Flights
+                </p>
+
+                <SearchBox
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    label='Departure'
+                />
+            </div>
 
             <Table
                 className='table-sm theme-light bordered'
                 columns={columns}
-                data={departures}
+                data={pagedData}
+                sortColumn={sortColumn}
+                onSort={(sortColumn) => setSortColumn(sortColumn)}
+            />
+
+            <Pagination
+                currentPage={currentPage}
+                itemsCount={totalCount}
+                onPageChange={(page) => setCurrentPage(page)}
             />
         </>
     );

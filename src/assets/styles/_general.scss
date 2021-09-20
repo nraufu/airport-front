@@ -41,6 +41,12 @@ a {
     }
 }
 
+button {
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
 .spacing {
     &-lg {
         padding-top: 100px;

@@ -97,6 +97,7 @@
 .form {
     &-control {
         margin-bottom: 1rem;
+        padding: 0.6rem 1rem;
     }
 
     &-group {
@@ -187,7 +188,7 @@ table {
     }
 
     &.bordered {
-        border: 1px solid $gray-100;
+        border: 1px solid $gray-200;
     }
 
     &.theme-light {
@@ -391,4 +392,43 @@ table {
     span {
         font-size: 1.6rem;
     }
+}
+
+/* --------------------- pagination --------------------- */
+.pagination-container {
+    font-size: 1.4rem;
+    margin-top: 3.5rem;
+
+    &__input-container {
+        max-width: 8rem;
+        margin-left: 2rem;
+        margin-right: 1rem;
+        margin-bottom: -1rem;
+
+        input {
+            text-align: center;
+            color: $gray-500;
+        }
+
+        .input-wrapper {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* --------------------- table-header (count && searchbox) --------------------- */
+.table-header-count {
+    padding-top: 2.5rem;
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid $gray-200;
+
+    .count {
+        font-size: 1.6rem;
+    }
+}
+
+/* --------------------- searchBox --------------------- */
+.search-input {
+    max-width: 25rem;
 }

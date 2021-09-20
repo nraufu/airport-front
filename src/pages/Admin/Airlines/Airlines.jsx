@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 import AccordionCard from '../../../components/Accordion/Accordion';
-import AddableInput from '../../../components/UI/Input/AddableInput';
-import Input from '../../../components/UI/Input/Input';
-import Button from '../../../components/UI/Button/Button';
-import Table from '../../../components/UI/Table/Table';
-import Select from '../../../components/UI/Select/Select';
-import ActionButtons from '../../../components/UI/Table/ActionButtons';
-import ConfirmationBox from '../../../components/UI/AlertBox/ConfirmationBox';
 import { ViewAirlineModal, EditAirlineModal } from './modals';
 import { airlineActions } from '../../../store/actions/airlines';
 import { countriesList } from '../../../components/UI/countries';
+import { getPagedData } from '../../../utils/paginate';
+import Pagination from '../../../components/Pagination/Pagination';
+import {
+    AddableInput,
+    Input,
+    Button,
+    Table,
+    Select,
+    ActionButtons,
+    ConfirmationBox,
+    SearchBox,
+} from '../../../components/UI';
 
 const Airlines = ({
     airlines,
@@ -25,6 +30,9 @@ const Airlines = ({
     const [country, setCountry] = useState('');
     const [flights, setFlights] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [sortColumn, setSortColumn] = useState({});
 
     useEffect(() => {
         fetchAirlines();
@@ -61,8 +69,9 @@ const Airlines = ({
         { label: 'Name', path: 'name' },
         { label: 'Country', path: 'country' },
         {
-            label: 'Flights',
+            label: 'Total Flights',
             path: 'flights',
+            content: (item) => <span>{item.flights.length}</span>,
         },
         {
             label: 'action',
@@ -90,6 +99,14 @@ const Airlines = ({
             ),
         },
     ];
+
+    const { totalCount, pagedData } = getPagedData(
+        'name',
+        currentPage,
+        sortColumn,
+        searchQuery,
+        airlines
+    );
 
     return (
         <>
@@ -156,12 +173,31 @@ const Airlines = ({
                 </Container>
             </AccordionCard>
 
-            <h6 className='title-tertiary my-5'>List</h6>
+            <div className='d-flex justify-content-between align-items-center table-header-count'>
+                <p className='count'>
+                    Showing <span className='text-primary'>{totalCount}</span>{' '}
+                    Airlines
+                </p>
+
+                <SearchBox
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    label='Airline'
+                />
+            </div>
 
             <Table
                 className='table-sm theme-light bordered'
                 columns={columns}
-                data={airlines}
+                data={pagedData}
+                sortColumn={sortColumn}
+                onSort={(sortColumn) => setSortColumn(sortColumn)}
+            />
+
+            <Pagination
+                currentPage={currentPage}
+                itemsCount={totalCount}
+                onPageChange={(page) => setCurrentPage(page)}
             />
         </>
     );
