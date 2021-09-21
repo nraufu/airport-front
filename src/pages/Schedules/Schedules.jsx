@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import airplaneWing from '../../assets/images/airplane-wing.jpg';
 import Footer from '../../parts/Footer/Footer';
-import Table from '../../components/UI/Table/Table';
+import { Table } from '../../components/UI';
 import { arrivalActions } from '../../store/actions/arrivals';
 import { departureActions } from '../../store/actions/departures';
 

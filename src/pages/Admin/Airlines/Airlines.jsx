@@ -40,13 +40,16 @@ const Airlines = ({
 
     const addAirline = async () => {
         setIsSubmitting(true);
+
         const result = await createAirline({
             name,
             logoImg: logo,
             country,
             flights,
         });
+
         setIsSubmitting(false);
+
         if (result.airline) {
             toast.success('Airline created successfully');
             setName('');

@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleNews from './SingleNews';
+import CardNews from '../../components/NewsComponent.jsx/CardNews';
 import newsImg from '../../assets/images/blue-sky.jpg';
 
 const News = () => {
@@ -46,7 +46,7 @@ const News = () => {
         <div className='container spacing-sm'>
             <div className='row justify-content-center align-items-center'>
                 {news.map((item, index) => {
-                    return <SingleNews key={index} {...item} />;
+                    return <CardNews key={index} {...item} />;
                 })}
             </div>
         </div>

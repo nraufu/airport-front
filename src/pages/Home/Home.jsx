@@ -7,11 +7,11 @@ import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 import bannerImg from '../../assets/images/airplane-wing.jpg';
 import newsImg from '../../assets/images/blue-sky.jpg';
-import Title from '../../components/UI/Title/Title';
+import { Title } from '../../components/UI';
 import TopicBox from '../../components/Topic-Box/TopicBox';
 import image1 from '../../assets/images/kigali-duty-free.jpg';
 import image2 from '../../assets/images/kigali-airport-lounge.jpg';
-import SingleNews from '../News/SingleNews';
+import CardNews from '../../components/NewsComponent.jsx/CardNews';
 
 const Home = () => {
     const services = [
@@ -40,19 +40,19 @@ const Home = () => {
 
     const news = [
         {
-            img: newsImg,
+            thumbnail: newsImg,
             title: 'News One',
             description:
                 'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
         },
         {
-            img: newsImg,
+            thumbnail: newsImg,
             title: 'News Two',
             description:
                 'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
         },
         {
-            img: newsImg,
+            thumbnail: newsImg,
             title: 'News Three',
             description:
                 'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
@@ -119,7 +119,7 @@ const Home = () => {
                 <div className='container'>
                     <div className='row'>
                         {news.slice(0, 3).map((news, index) => (
-                            <SingleNews key={index} {...news} />
+                            <CardNews key={index} {...news} />
                         ))}
                     </div>
                 </div>
