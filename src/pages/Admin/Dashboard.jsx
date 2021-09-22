@@ -4,6 +4,7 @@ import NewsList from './AdminNews/NewsList';
 import Airlines from './Airlines/Airlines';
 import Arrivals from './Arrivals/Arrivals';
 import Departures from './Departures/Departures';
+import General from './General';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -70,7 +71,7 @@ const Dashboard = () => {
             </nav>
 
             <main className='dashboard-view'>
-                {activeTab === 'dashboard' && <p>Dashboard</p>}
+                {activeTab === 'dashboard' && <General />}
                 {activeTab === 'airlines' && <Airlines />}
                 {activeTab === 'departures' && <Departures />}
                 {activeTab === 'arrivals' && <Arrivals />}

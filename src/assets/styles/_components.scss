@@ -440,3 +440,28 @@ table {
 .search-input {
     max-width: 25rem;
 }
+
+/* --------------------- White Box --------------------- */
+.white-box {
+    background: $white;
+    box-shadow: 0 0.5rem 0.5rem rgba($gray-400, 0.5);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+
+    .box-title {
+        font-weight: 600;
+        line-height: 3rem;
+        font-size: 1.8rem;
+    }
+
+    .list-inline {
+        padding-left: 0;
+        margin-left: -5px;
+        list-style: none;
+
+        .counter {
+            font-size: 2.4rem;
+            font-weight: 300;
+        }
+    }
+}
