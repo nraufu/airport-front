@@ -15,6 +15,7 @@ import { getAdmin } from './utils/authentication';
 import Loading from './components/Loading/Loading';
 import NotFound from './pages/NotFound/NotFound';
 import News from './pages/News/News';
+import ViewNews from './pages/News/ViewNews';
 
 const App = ({ location }) => {
     const [admin, setAdmin] = useState();
@@ -49,7 +50,8 @@ const App = ({ location }) => {
                         <Route path='/services' component={Services} />
                         <Route path='/weather' component={Weather} />
                         <Route path='/covid' component={Covid} />
-                        <Route path='/news' component={News} />
+                        <Route exact path='/news' component={News} />
+                        <Route exact path='/news/:id' component={ViewNews} />
                         <Route path='/login' component={SignIn} />
                         <Route path='/not-found' component={NotFound} />
                         <ProtectedRoute

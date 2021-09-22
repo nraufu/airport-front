@@ -6,10 +6,11 @@ import { newsActions } from '../../../store/actions/news';
 const AddNews = ({ updateNews, loadNews, newsId, currentNews }) => {
     const [result, setResult] = useState();
 
-    useEffect(() => loadNews(newsId), [loadNews, newsId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => loadNews(newsId), []);
 
     const saveNews = async (news) => {
-        const response = await updateNews({
+        const response = await updateNews(newsId, {
             title: news.title,
             img: news.img,
             body: news.body,

@@ -69,11 +69,11 @@ const NewsForm = ({ onSave, submitBtnLabel, data }) => {
                     <Input
                         elementType='input'
                         name='img'
-                        valueType='Image'
+                        valueType='Header Image'
                         value={img}
                         elementConfig={{
                             type: 'text',
-                            placeholder: 'Image',
+                            placeholder: 'Header Image',
                         }}
                         onChange={(e) => setImg(e.target.value)}
                     />

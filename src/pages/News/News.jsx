@@ -1,56 +1,44 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import CardNews from '../../components/NewsComponent.jsx/CardNews';
-import newsImg from '../../assets/images/blue-sky.jpg';
+import { newsActions } from '../../store/actions/news';
+import Loading from '../../components/Loading/Loading';
+import Footer from '../../parts/Footer/Footer';
 
-const News = () => {
-    const news = [
-        {
-            img: newsImg,
-            title: 'News One',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            img: newsImg,
-            title: 'News Two',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            img: newsImg,
-            title: 'News Three',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            img: newsImg,
-            title: 'News One',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            img: newsImg,
-            title: 'News Two',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            img: newsImg,
-            title: 'News Three',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-    ];
+const News = ({ fetchNews, news }) => {
+    const [isLoading, setIsLoading] = useState(false);
 
-    return (
-        <div className='container spacing-sm'>
-            <div className='row justify-content-center align-items-center'>
-                {news.map((item, index) => {
-                    return <CardNews key={index} {...item} />;
-                })}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        setIsLoading(true);
+        await fetchNews();
+        setIsLoading(false);
+    }, [fetchNews]);
+
+    return isLoading ? (
+        <Loading />
+    ) : (
+        <>
+            <div className='container spacing-sm'>
+                <div className='row justify-content-center align-items-center'>
+                    {news.map((item, index) => {
+                        return <CardNews key={index} {...item} />;
+                    })}
+                </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 
-export default News;
+const mapStateToProps = ({ newsState }) => {
+    return {
+        news: newsState.news,
+    };
+};
+
+const mapDispatchToProps = {
+    fetchNews: newsActions.getAll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(News);

@@ -48,8 +48,9 @@ const Navbar = ({ isAuthenticated }) => (
                 >
                     <ul className='navbar-nav'>
                         <NavItem link='/' exact label='Home' />
-                        <NavItem link='/schedules' label='Flight Schedules' />
+                        <NavItem link='/schedules' label='Flights' />
                         <NavItem link='/services' label='Services' />
+                        <NavItem link='/news' label='News' />
                         <NavItem link='/weather' label='Weather' />
                         <NavItem link='/covid' label='Covid-19' />
                     </ul>
