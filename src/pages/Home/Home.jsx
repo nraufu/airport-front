@@ -1,19 +1,24 @@
-import { Fragment } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ImageLibrary from '../../parts/Gallery/Gallery';
 import Banner from '../../components/Banner/Banner';
 import Card from '../../components/Card/Card';
 import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 import bannerImg from '../../assets/images/airplane-wing.jpg';
-import newsImg from '../../assets/images/blue-sky.jpg';
 import { Title } from '../../components/UI';
 import TopicBox from '../../components/Topic-Box/TopicBox';
 import image1 from '../../assets/images/kigali-duty-free.jpg';
 import image2 from '../../assets/images/kigali-airport-lounge.jpg';
 import CardNews from '../../components/NewsComponent.jsx/CardNews';
+import { newsActions } from '../../store/actions/news';
 
-const Home = () => {
+const Home = ({ news, fetchNews }) => {
+    useEffect(() => {
+        fetchNews();
+    }, [fetchNews]);
+
     const services = [
         {
             title: 'Weather',
@@ -38,27 +43,6 @@ const Home = () => {
         },
     ];
 
-    const news = [
-        {
-            thumbnail: newsImg,
-            title: 'News One',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            thumbnail: newsImg,
-            title: 'News Two',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-        {
-            thumbnail: newsImg,
-            title: 'News Three',
-            description:
-                'Check out our newsOrci varius natoque penatibus et magnis dis parturient montes, nascetur',
-        },
-    ];
-
     const topics = [
         {
             title: 'Duty Free && Shop',
@@ -77,7 +61,7 @@ const Home = () => {
     ];
 
     return (
-        <Fragment>
+        <>
             <Banner bannerImg={bannerImg} classNames='hero' />
 
             <div
@@ -117,7 +101,7 @@ const Home = () => {
             <div className='spacing-md'>
                 <Title name='Latest News' />
                 <div className='container'>
-                    <div className='row'>
+                    <div className='row justify-content-center'>
                         {news.slice(0, 3).map((news, index) => (
                             <CardNews key={index} {...news} />
                         ))}
@@ -137,8 +121,18 @@ const Home = () => {
             <ImageLibrary />
 
             <Footer />
-        </Fragment>
+        </>
     );
 };
 
-export default Home;
+const mapStateToProps = ({ newsState }) => {
+    return {
+        news: newsState.news,
+    };
+};
+
+const mapDispatchToProps = {
+    fetchNews: newsActions.getAll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
