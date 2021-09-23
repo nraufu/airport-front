@@ -6,7 +6,7 @@
 
 .dashboard {
     display: flex;
-    height: 100vh;
+    // height: 100vh;
 }
 
 .sidebar {
@@ -24,6 +24,8 @@
     background-color: $white;
     flex: 1;
     padding: 2.5rem;
+    height: 90vh;
+    overflow: auto;
 }
 
 /////////////////////////////////////////////

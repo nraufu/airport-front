@@ -447,6 +447,7 @@ table {
     box-shadow: 0 0.5rem 0.5rem rgba($gray-400, 0.5);
     padding: 2.5rem;
     margin-bottom: 3rem;
+    border-radius: 0.5rem;
 
     .box-title {
         font-weight: 600;
@@ -462,6 +463,24 @@ table {
         .counter {
             font-size: 2.4rem;
             font-weight: 300;
+        }
+    }
+}
+
+/* --------------------- report chart --------------------- */
+.report-chart {
+    border-radius: 0.3rem;
+
+    .card-header {
+        padding-bottom: 1.4rem;
+        margin-bottom: 1.4rem;
+
+        .title {
+            font-size: 1.8rem;
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
         }
     }
 }

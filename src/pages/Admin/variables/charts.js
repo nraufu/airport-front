@@ -147,7 +147,7 @@ var colors = {
   },
   theme: {
     default: "#172b4d",
-    primary: "#5e72e4",
+    primary: "#418dc8",
     secondary: "#f4f5f7",
     info: "#11cdef",
     success: "#2dce89",
@@ -286,7 +286,7 @@ function parseOptions(parent, options) {
   }
 }
 
-let chartExample1 = {
+let chartFlights = {
   options: {
     scales: {
       yAxes: [
@@ -339,8 +339,62 @@ let chartExample1 = {
   },
 };
 
+let chartDepartures = {
+  options: {
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            color: colors.gray[900],
+            zeroLineColor: colors.gray[900],
+          },
+        },
+      ],
+    },
+    tooltips: {
+      callbacks: {
+        label: function (item, data) {
+          var label = data.datasets[item.datasetIndex].label || "";
+          var yLabel = item.yLabel;
+          var content = "";
+
+          if (data.datasets.length > 1) {
+            content += label;
+          }
+
+          content += yLabel;
+          return content;
+        },
+      },
+    },
+  },
+  data1: (canvas) => {
+    return {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [
+        {
+          label: "Departures",
+          data: [10, 20, 10, 30, 15, 40, 20, 60, 60, 60, 70, 80, 100],
+        },
+      ],
+    };
+  },
+  data2: (canvas) => {
+    return {
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      datasets: [
+        {
+          label: "Departures",
+          data: [10, 20, 5, 25, 10, 30, 15, 40, 40],
+        },
+      ],
+    };
+  },
+};
+
 module.exports = {
   chartOptions,
   parseOptions,
-  chartExample1,
+  chartFlights,
+  chartDepartures,
 };
