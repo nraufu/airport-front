@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Card,
     CardHeader,
@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import Chart from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import WhiteBox from '../../components/WhiteBox/WhiteBox';
 import {
@@ -18,12 +19,31 @@ import {
     chartOptions,
     parseOptions,
 } from './variables/charts';
+import { airlineActions } from '../../store/actions/airlines';
+import { departureActions } from '../../store/actions/departures';
+import { arrivalActions } from '../../store/actions/arrivals';
 
-const General = () => {
+const General = ({
+    loadAirlines,
+    loadDepartures,
+    loadArrivals,
+    arrivals,
+    departures,
+    airlines,
+}) => {
     const [activeArrivalNav, setActiveArrivalNav] = useState(1);
     const [activeDepartureNav, setActiveDepartureNav] = useState(1);
     const [chartData1, setChartData1] = useState('data1');
     const [chartData2, setChartData2] = useState('data1');
+
+    useEffect(() => {
+        loadAirlines();
+        loadDepartures();
+        loadArrivals();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    console.log(airlines && airlines.length);
 
     if (window.Chart) {
         parseOptions(Chart, chartOptions());
@@ -42,10 +62,10 @@ const General = () => {
     };
 
     const activities = [
-        { title: 'Total Visit', number: 48 },
-        { title: 'Total Airline', number: 20 },
-        { title: 'Today arrivals', number: 10 },
-        { title: 'Today departures', number: 10 },
+        // { title: 'Total Visit', number: 48 },
+        { title: 'Total Airline', number: airlines && airlines.length },
+        { title: 'Today arrivals', number: arrivals && arrivals.length },
+        { title: 'Today departures', number: departures && departures.length },
     ];
 
     return (
@@ -186,4 +206,18 @@ const General = () => {
     );
 };
 
-export default General;
+const mapDispatchToProps = {
+    loadArrivals: arrivalActions.getAll,
+    loadDepartures: departureActions.getAll,
+    loadAirlines: airlineActions.getAll,
+};
+
+const mapStateToProps = ({ airlinesState, departuresState, arrivalsState }) => {
+    return {
+        airlines: airlinesState.airlines,
+        departures: departuresState.departures,
+        arrivals: arrivalsState.arrivals,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(General);

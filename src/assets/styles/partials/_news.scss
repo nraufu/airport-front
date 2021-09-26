@@ -15,6 +15,10 @@
         &--picture {
             transition: opacity 0.5s;
 
+            img {
+                width: 100%;
+            }
+
             &:hover {
                 opacity: 0.5;
             }

@@ -317,11 +317,11 @@ let chartFlights = {
   },
   data1: (canvas) => {
     return {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
       datasets: [
         {
           label: "Arrivals",
-          data: [0, 20, 10, 30, 15, 40, 20, 60, 60, 60, 70, 80, 100],
+          data: [0, 20, 10, 30, 15, 40, 20, 60, 25, 60,],
         },
       ],
     };
@@ -370,11 +370,11 @@ let chartDepartures = {
   },
   data1: (canvas) => {
     return {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
       datasets: [
         {
           label: "Departures",
-          data: [10, 20, 10, 30, 15, 40, 20, 60, 60, 60, 70, 80, 100],
+          data: [10, 20, 10, 30, 15, 40, 20, 35, 40, 60],
         },
       ],
     };

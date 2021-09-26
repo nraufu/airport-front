@@ -10,7 +10,7 @@ const CardNews = ({ _id, thumbnail, title, description, actionBtns }) => {
                     <img
                         src={thumbnail}
                         alt='news'
-                        className='img-fluid news-item--picture'
+                        className='news-item--picture'
                     />
                 </a>
 
