@@ -4,6 +4,8 @@ import CardNews from '../../components/NewsComponent.jsx/CardNews';
 import { newsActions } from '../../store/actions/news';
 import Loading from '../../components/Loading/Loading';
 import Footer from '../../parts/Footer/Footer';
+import Banner from '../../components/Banner/Banner';
+import bannerImg from '../../assets/images/news-bgimg.jpg';
 
 const News = ({ fetchNews, news }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +21,7 @@ const News = ({ fetchNews, news }) => {
         <Loading />
     ) : (
         <>
+        <Banner   title='Latest News' bannerImg={bannerImg}/>
             <div className='container spacing-sm'>
                 <div className='row justify-content-center align-items-center'>
                     {news.map((item, index) => {

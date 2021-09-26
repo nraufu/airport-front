@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ImageLibrary from '../../parts/Gallery/Gallery';
 import Banner from '../../components/Banner/Banner';
-import Card from '../../components/Card/Card';
 import Footer from '../../parts/Footer/Footer';
 import VisitRwanda from '../../parts/Visit-rwanda/VisitRwanda';
 import bannerImg from '../../assets/images/airplane-wing.jpg';
@@ -13,35 +12,12 @@ import image1 from '../../assets/images/kigali-duty-free.jpg';
 import image2 from '../../assets/images/kigali-airport-lounge.jpg';
 import CardNews from '../../components/NewsComponent.jsx/CardNews';
 import { newsActions } from '../../store/actions/news';
+import Weather from '../Weather/Weather';
 
 const Home = ({ news, fetchNews }) => {
     useEffect(() => {
         fetchNews();
     }, [fetchNews]);
-
-    const services = [
-        {
-            title: 'Weather',
-            description: 'Weather forecast for the next days',
-            icon: 'lnr lnr-sun',
-            btnLabel: 'View Details',
-            link: '/weather',
-        },
-        {
-            title: 'Parking',
-            description: 'Available parking slots',
-            icon: 'lnr lnr-car',
-            btnLabel: 'View Details',
-            link: '/parking',
-        },
-        {
-            title: 'Flights',
-            description: 'Check out our flights schedules',
-            icon: 'lnr lnr-location',
-            btnLabel: 'Discover',
-            link: '/flights',
-        },
-    ];
 
     const topics = [
         {
@@ -66,24 +42,9 @@ const Home = ({ news, fetchNews }) => {
 
             <div
                 className='container spacing-lg'
-                style={{ marginTop: '-15rem' }}
+                style={{ marginTop: '-18rem' }}
             >
-                <div className='row'>
-                    {services.map((service, index) => (
-                        <div
-                            className='col-lg-4 col-md-6 col-12 service-card'
-                            key={index}
-                        >
-                            <Card
-                                title={service.title}
-                                description={service.description}
-                                icon={service.icon}
-                                btnLabel={service.btnLabel}
-                                link={service.link}
-                            />
-                        </div>
-                    ))}
-                </div>
+                <Weather />
             </div>
 
             <div className='container'>
