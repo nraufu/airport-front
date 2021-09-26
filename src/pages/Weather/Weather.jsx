@@ -10,11 +10,10 @@ const Weather = () => {
 
     useEffect(() => {
         fetch(
-            'http://dataservice.accuweather.com/forecasts/v1/daily/5day/293211?apikey=Yf3WKj1TwqWvjAKmBjtqR40z0gwW8kQw'
+            'https://dataservice.accuweather.com/forecasts/v1/daily/5day/293211?apikey=Yf3WKj1TwqWvjAKmBjtqR40z0gwW8kQw'
         )
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 return setWeatherInfo(
                     data.DailyForecasts.map((item) => {
                         return {
@@ -31,7 +30,7 @@ const Weather = () => {
 
     return (
         <>
-            <div class='forecast-container position-relative'>
+            <div className='forecast-container position-relative'>
                 {weatherInfo &&
                     weatherInfo.map((item, index) => (
                         <WeatherDay key={index} {...item} />
