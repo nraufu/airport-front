@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Spinner = () => {
+const Spinner = (props) => {
     return (
-        <div className='spinner'>
+        <div className={`spinner ${props.isWhite && 'background-white'}`}>
             <div></div>
             <div></div>
             <div></div>

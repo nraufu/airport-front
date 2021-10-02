@@ -83,7 +83,7 @@
 }
 
 .btn-more {
-    background: rgba($primary, 0.6);
+    background: $warning;
     padding: 10px 15px;
     color: $white !important;
     transition: 0.3s ease-in all;
@@ -92,6 +92,6 @@
     text-decoration: none !important;
 
     &:hover {
-        background: rgba($warning, 1);
+        background: rgba($primary, 0.7);
     }
 }
