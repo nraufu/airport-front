@@ -155,14 +155,14 @@ const Airlines = ({
                         <Col xs={12} md={6} lg={4}>
                             <Input
                                 elementType='input'
-                                name='logoUrl'
-                                valueType='Logo Url'
-                                value={logo}
+                                name='phone'
+                                valueType='Phone'
+                                value={phone}
                                 elementConfig={{
                                     type: 'text',
-                                    placeholder: 'Logo Url',
+                                    placeholder: 'Phone',
                                 }}
-                                onChange={(e) => setLogo(e.target.value)}
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                         </Col>
 
@@ -210,15 +210,12 @@ const Airlines = ({
 
                         <Col xs={12} md={6} lg={4}>
                             <Input
-                                elementType='input'
-                                name='phone'
-                                valueType='Phone'
-                                value={phone}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Phone',
-                                }}
-                                onChange={(e) => setPhone(e.target.value)}
+                                elementType='image'
+                                valueType='Logo image'
+                                name='logo'
+                                type='file'
+                                multiple={false}
+                                onDone={({ base64 }) => setLogo(base64)}
                             />
                         </Col>
 

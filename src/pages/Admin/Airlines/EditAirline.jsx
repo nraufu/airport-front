@@ -85,15 +85,13 @@ function EditAirline({ airline, updateAirline }) {
 
             <Col lg={6}>
                 <Input
-                    elementType='input'
-                    name='logoUrl'
-                    valueType='Logo Url'
+                    elementType='image'
+                    valueType='Logo image'
+                    name='logo'
+                    type='file'
+                    multiple={false}
+                    onDone={({ base64 }) => setLogoUrl(base64)}
                     value={logoUrl}
-                    elementConfig={{
-                        type: 'text',
-                        placeholder: 'Logo Url',
-                    }}
-                    onChange={(e) => setLogoUrl(e.target.value)}
                 />
             </Col>
 
