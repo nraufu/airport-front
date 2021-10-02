@@ -12,6 +12,9 @@ function EditAirline({ airline, updateAirline }) {
     const [name, setName] = useState('');
     const [logoUrl, setLogoUrl] = useState('');
     const [country, setCountry] = useState('');
+    const [website, setWebsite] = useState('');
+    const [headQuarterLocation, setHeadQuarterLocation] = useState('');
+    const [phone, setPhone] = useState('');
     const [flights, setFlights] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,6 +33,20 @@ function EditAirline({ airline, updateAirline }) {
 
     const saveAirline = async () => {
         setIsSubmitting(true);
+
+        if (
+            name === '' ||
+            logoUrl === '' ||
+            country === '' ||
+            website === '' ||
+            headQuarterLocation === '' ||
+            phone === ''
+        ) {
+            toast.error('Please fill all fields');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await updateAirline(airline._id, {
             name,
             logoImg: logoUrl,
@@ -64,7 +81,9 @@ function EditAirline({ airline, updateAirline }) {
                     }}
                     onChange={(e) => setName(e.target.value)}
                 />
+            </Col>
 
+            <Col lg={6}>
                 <Input
                     elementType='input'
                     name='logoUrl'
@@ -76,7 +95,9 @@ function EditAirline({ airline, updateAirline }) {
                     }}
                     onChange={(e) => setLogoUrl(e.target.value)}
                 />
+            </Col>
 
+            <Col lg={6}>
                 <Input
                     elementType='country'
                     name='country'
@@ -91,6 +112,48 @@ function EditAirline({ airline, updateAirline }) {
             </Col>
 
             <Col lg={6}>
+                <Input
+                    elementType='input'
+                    name='website'
+                    valueType='Website'
+                    value={website}
+                    elementConfig={{
+                        type: 'text',
+                        placeholder: 'Website',
+                    }}
+                    onChange={(e) => setWebsite(e.target.value)}
+                />
+            </Col>
+
+            <Col lg={6}>
+                <Input
+                    elementType='input'
+                    name='headQuarterLocation'
+                    valueType='Head Quarter Location'
+                    value={headQuarterLocation}
+                    elementConfig={{
+                        type: 'text',
+                        placeholder: 'Head Quarter Location',
+                    }}
+                    onChange={(e) => setHeadQuarterLocation(e.target.value)}
+                />
+            </Col>
+
+            <Col lg={6}>
+                <Input
+                    elementType='input'
+                    name='phone'
+                    valueType='Phone'
+                    value={phone}
+                    elementConfig={{
+                        type: 'text',
+                        placeholder: 'Phone',
+                    }}
+                    onChange={(e) => setPhone(e.target.value)}
+                />
+            </Col>
+
+            <Col lg={12}>
                 <AddableInput
                     label='Flights'
                     placeholder='Enter Airline flights'
@@ -99,7 +162,7 @@ function EditAirline({ airline, updateAirline }) {
                 />
             </Col>
 
-            <Col lg={4}>
+            <Col lg={12}>
                 <Button
                     label='Update'
                     className='btn btn-primary text-white mt-4'

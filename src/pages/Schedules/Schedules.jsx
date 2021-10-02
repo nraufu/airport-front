@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import airplaneWing from '../../assets/images/airplane-wing.jpg';
 import Footer from '../../parts/Footer/Footer';
 import { Table } from '../../components/UI';
@@ -49,6 +50,29 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
                 style={{ backgroundImage: `url(${airplaneWing})` }}
             >
                 <div className='container'>
+                    <div className='flights-header'>
+                        <h1 className='title'>Arrivals and Departures</h1>
+
+                        <div className='alert-timed'>
+                            <p>
+                                <strong>
+                                    <span style={{ color: '#ff0000' }}>
+                                        IMPORTANT NOTICE
+                                    </span>
+                                </strong>
+                                : Given the evolving situation, Kigali
+                                International Airport recommends that passengers
+                                contact their airline for further information
+                                about an upcoming flight.
+                            </p>
+                            <p>
+                                For the most recent updates on country-specific
+                                Covid-19 requirements and travel restrictions,
+                                please click <Link to='/covid'>here</Link>.
+                            </p>
+                        </div>
+                    </div>
+
                     <div className='flights-container'>
                         <ul id='ad-tabs' className='tabs'>
                             <li className='tab'>

@@ -28,10 +28,13 @@ const Airlines = ({
     const [name, setName] = useState('');
     const [logo, setLogo] = useState('');
     const [country, setCountry] = useState('');
+    const [website, setWebsite] = useState('');
+    const [headQuarterLocation, setheadQuarterLocation] = useState('');
+    const [phone, setPhone] = useState('');
     const [flights, setFlights] = useState([]);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [sortColumn, setSortColumn] = useState({});
 
     useEffect(() => {
@@ -41,11 +44,28 @@ const Airlines = ({
     const addAirline = async () => {
         setIsSubmitting(true);
 
+        if (
+            name === '' ||
+            logo === '' ||
+            country === '' ||
+            website === '' ||
+            headQuarterLocation === '' ||
+            phone === '' ||
+            flights.length === 0
+        ) {
+            toast.error('Please fill all the fields');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await createAirline({
             name,
             logoImg: logo,
             country,
             flights,
+            website,
+            headQuarterLocation,
+            phone,
         });
 
         setIsSubmitting(false);
@@ -56,8 +76,9 @@ const Airlines = ({
             setLogo('');
             setCountry('');
             setFlights([]);
+            return;
         } else {
-            toast.error('Something went wrong');
+            toast.error('Something Went Wrong');
         }
     };
 
@@ -154,6 +175,50 @@ const Airlines = ({
                                     value: country.name,
                                     label: country.name,
                                 }))}
+                            />
+                        </Col>
+
+                        <Col xs={12} md={6} lg={4}>
+                            <Input
+                                elementType='input'
+                                name='website'
+                                valueType='Airline Website'
+                                value={website}
+                                elementConfig={{
+                                    type: 'text',
+                                    placeholder: 'Website',
+                                }}
+                                onChange={(e) => setWebsite(e.target.value)}
+                            />
+                        </Col>
+
+                        <Col xs={12} md={6} lg={4}>
+                            <Input
+                                elementType='input'
+                                name='headQuarterLocation'
+                                valueType='Head Quarter Location'
+                                value={headQuarterLocation}
+                                elementConfig={{
+                                    type: 'text',
+                                    placeholder: 'Head Quarter Location',
+                                }}
+                                onChange={(e) =>
+                                    setheadQuarterLocation(e.target.value)
+                                }
+                            />
+                        </Col>
+
+                        <Col xs={12} md={6} lg={4}>
+                            <Input
+                                elementType='input'
+                                name='phone'
+                                valueType='Phone'
+                                value={phone}
+                                elementConfig={{
+                                    type: 'text',
+                                    placeholder: 'Phone',
+                                }}
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                         </Col>
 

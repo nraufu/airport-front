@@ -11,6 +11,14 @@ const Table = ({ columns, sortColumn, onSort, data, className }) => {
                 onSort={onSort}
             />
             <TableBody columns={columns} data={data} />
+
+            {data.length === 0 && (
+                <tbody>
+                    <tr>
+                        <td colSpan={columns.length}>No Data</td>
+                    </tr>
+                </tbody>
+            )}
         </table>
     );
 };

@@ -43,8 +43,6 @@ const General = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(airlines && airlines.length);
-
     if (window.Chart) {
         parseOptions(Chart, chartOptions());
     }
@@ -71,7 +69,7 @@ const General = ({
     return (
         <>
             {/* cards */}
-            <div class='row justify-content-center'>
+            <div className='row justify-content-center'>
                 {activities.map((activity, index) => (
                     <WhiteBox
                         key={index}

@@ -4,6 +4,30 @@
 * ------------------------------------------------------------------------
 */
 
+.flights-header {
+    padding-bottom: 8rem;
+    color: $white;
+    margin-top: -4rem;
+
+    .title {
+        font-size: 5.5rem;
+        text-transform: uppercase;
+        text-shadow: 4px 4px 8px rgba(1, 1, 1, 0.75);
+    }
+
+    .alert-timed {
+        background-color: rgba($white, 0.9);
+        border-radius: 5px;
+        margin-top: 20px;
+        padding: 15px 20px;
+        color: $dark;
+        font-size: 90%;
+        max-width: 900px;
+        position: relative;
+        text-align: left;
+    }
+}
+
 .flights-wrapper {
     padding-top: 150px;
     padding-bottom: 150px;

@@ -12,8 +12,18 @@ import Spinner from '../../../components/Spinner/Spinner';
 function ViewAirline(props) {
     const { airlineId, loadAirline, airline, deleteAirline } = props;
 
-    const { _id, name, logoImgUri, country, flights, createdAt, updatedAt } =
-        airline || {};
+    const {
+        _id,
+        name,
+        logoImgUri,
+        country,
+        flights,
+        website,
+        headerQuarterLocation,
+        phone,
+        createdAt,
+        updatedAt,
+    } = airline || {};
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -40,9 +50,21 @@ function ViewAirline(props) {
             </header>
 
             <Grid.Row>
-                <Grid.Col lg={6}>
+                <Grid.Col lg={6} className='mb-3'>
                     <ContentBox title='Logo Image'>
                         <img src={logoImgUri} className='img-fluid' alt='' />
+                    </ContentBox>
+                </Grid.Col>
+
+                <Grid.Col lg={6} className='mb-3'>
+                    <ContentBox title='Website'>
+                        <a
+                            href={website}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                            {website}
+                        </a>
                     </ContentBox>
                 </Grid.Col>
 
@@ -50,6 +72,10 @@ function ViewAirline(props) {
                     <Grid.Row>
                         <Grid.Col lg={6}>
                             <ContentBox title='Country'>{country}</ContentBox>
+                        </Grid.Col>
+
+                        <Grid.Col lg={6}>
+                            <ContentBox title='Phone'>{phone}</ContentBox>
                         </Grid.Col>
 
                         <Grid.Col lg={6}>
@@ -63,6 +89,12 @@ function ViewAirline(props) {
                             </ContentBox>
                         </Grid.Col>
                     </Grid.Row>
+                </Grid.Col>
+
+                <Grid.Col lg={6}>
+                    <ContentBox title='Header Quarter Location'>
+                        {headerQuarterLocation}
+                    </ContentBox>
                 </Grid.Col>
             </Grid.Row>
 

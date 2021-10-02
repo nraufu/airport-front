@@ -54,6 +54,17 @@ const Departures = ({
 
     const addDeparture = async () => {
         setIsSubmitting(true);
+
+        if (
+            (airlineName === '' || flight === '' || destination === '',
+            scheduled === '',
+            status === '')
+        ) {
+            toast.error('Please fill all the fields');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await createDeparture({
             airlineLogo,
             airlineName,

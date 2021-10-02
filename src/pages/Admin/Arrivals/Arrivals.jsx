@@ -54,6 +54,19 @@ const Arrivals = ({
 
     const addArrival = async () => {
         setIsSubmitting(true);
+
+        if (
+            airlineName === '' ||
+            flight === '' ||
+            origin === '' ||
+            scheduled === '' ||
+            status === ''
+        ) {
+            toast.error('Please fill all the fields');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await createArrival({
             airlineLogo,
             airlineName,

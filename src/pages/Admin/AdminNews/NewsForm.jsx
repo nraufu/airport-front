@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { Grid } from '../../../components/Grid';
 import { Input, Button } from '../../../components/UI/';
 
@@ -22,6 +23,18 @@ const NewsForm = ({ onSave, submitBtnLabel, data }) => {
 
     const save = async () => {
         setIsSubmitting(true);
+
+        if (
+            title === '' ||
+            img === '' ||
+            thumbnail === '' ||
+            description === '' ||
+            body === ''
+        ) {
+            toast.error('Please fill all fields');
+            setIsSubmitting(false);
+            return;
+        }
 
         await onSave({
             title,
