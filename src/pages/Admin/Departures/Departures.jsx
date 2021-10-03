@@ -100,7 +100,13 @@ const Departures = ({
         { label: 'Flight', path: 'flight' },
         { label: 'Destination', path: 'destination' },
         { label: 'Scheduled', path: 'scheduled' },
-        { label: 'Status', path: 'status' },
+        {
+            label: 'Status',
+            path: 'status',
+            content: (item) => (
+                <span className='text-primary'>{item.status}</span>
+            ),
+        },
         {
             label: 'action',
             content: (item) => (

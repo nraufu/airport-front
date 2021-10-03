@@ -58,6 +58,22 @@ const Airlines = ({
             return;
         }
 
+        if (
+            !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+                website
+            )
+        ) {
+            toast.error('Please enter a valid website');
+            setIsSubmitting(false);
+            return;
+        }
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+            toast.error('Please enter a valid phone number');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await createAirline({
             name,
             logoImg: logo,
@@ -76,6 +92,9 @@ const Airlines = ({
             setLogo('');
             setCountry('');
             setFlights([]);
+            setWebsite('');
+            setheadQuarterLocation('');
+            setPhone('');
             return;
         } else {
             toast.error('Something Went Wrong');
@@ -160,7 +179,7 @@ const Airlines = ({
                                 value={phone}
                                 elementConfig={{
                                     type: 'text',
-                                    placeholder: 'Phone',
+                                    placeholder: '+CountryCode ###',
                                 }}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
@@ -196,11 +215,11 @@ const Airlines = ({
                             <Input
                                 elementType='input'
                                 name='headQuarterLocation'
-                                valueType='Head Quarter Location'
+                                valueType='Head Quarter Address'
                                 value={headQuarterLocation}
                                 elementConfig={{
                                     type: 'text',
-                                    placeholder: 'Head Quarter Location',
+                                    placeholder: 'Head Quarter Address',
                                 }}
                                 onChange={(e) =>
                                     setheadQuarterLocation(e.target.value)
@@ -216,6 +235,7 @@ const Airlines = ({
                                 type='file'
                                 multiple={false}
                                 onDone={({ base64 }) => setLogo(base64)}
+                                accept='image/*'
                             />
                         </Col>
 

@@ -77,23 +77,23 @@ function ViewAirline(props) {
                         <Grid.Col lg={6}>
                             <ContentBox title='Phone'>{phone}</ContentBox>
                         </Grid.Col>
-
-                        <Grid.Col lg={6}>
-                            <ContentBox title='Flights'>
-                                <ul>
-                                    {flights &&
-                                        flights.map((flight, index) => (
-                                            <li key={index}>{flight}</li>
-                                        ))}
-                                </ul>
-                            </ContentBox>
-                        </Grid.Col>
                     </Grid.Row>
                 </Grid.Col>
 
                 <Grid.Col lg={6}>
                     <ContentBox title='Header Quarter Location'>
                         {headerQuarterLocation}
+                    </ContentBox>
+                </Grid.Col>
+
+                <Grid.Col lg={6} className='mt-3'>
+                    <ContentBox title='Flights'>
+                        <ul>
+                            {flights &&
+                                flights.map((flight, index) => (
+                                    <li key={index}>{flight}</li>
+                                ))}
+                        </ul>
                     </ContentBox>
                 </Grid.Col>
             </Grid.Row>

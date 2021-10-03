@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { airlineActions } from '../../../store/actions/airlines';
-import Input from '../../../components/UI/Input/Input';
-import Button from '../../../components/UI/Button/Button';
-import AddableInput from '../../../components/UI/Input/AddableInput';
+import { Input, Button, AddableInput } from '../../../components/UI';
+import { ContentBox } from '../../../components/Layouts';
+import { Grid } from '../../../components/Grid';
 import Spinner from '../../../components/Spinner/Spinner';
 
 function EditAirline({ airline, updateAirline }) {
@@ -19,14 +19,22 @@ function EditAirline({ airline, updateAirline }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    console.log(logoUrl);
+
     useEffect(() => {
         setIsLoading(true);
 
-        setTimeout(() => {
+        if (airline) {
             setName(airline.name);
             setLogoUrl(airline.logoImgUri);
             setCountry(airline.country);
             setFlights(airline.flights);
+            setHeadQuarterLocation(airline.headQuarterLocation);
+            setPhone(airline.phone);
+            setWebsite(airline.website);
+        }
+
+        setTimeout(() => {
             setIsLoading(false);
         }, 1000);
     }, [airline]);
@@ -52,6 +60,9 @@ function EditAirline({ airline, updateAirline }) {
             logoImg: logoUrl,
             country,
             flights,
+            website,
+            headQuarterLocation,
+            phone,
         });
 
         if (result.status === 'Success') {
@@ -151,7 +162,7 @@ function EditAirline({ airline, updateAirline }) {
                 />
             </Col>
 
-            <Col lg={12}>
+            <Col lg={6}>
                 <AddableInput
                     label='Flights'
                     placeholder='Enter Airline flights'
@@ -159,6 +170,12 @@ function EditAirline({ airline, updateAirline }) {
                     onChange={setFlights}
                 />
             </Col>
+
+            <Grid.Col lg={6} className='mb-3'>
+                <ContentBox title='Logo Image'>
+                    <img src={logoUrl} className='img-fluid' alt='' />
+                </ContentBox>
+            </Grid.Col>
 
             <Col lg={12}>
                 <Button
