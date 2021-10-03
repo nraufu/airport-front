@@ -6,14 +6,42 @@ import Footer from '../../parts/Footer/Footer';
 import { Table } from '../../components/UI';
 import { arrivalActions } from '../../store/actions/arrivals';
 import { departureActions } from '../../store/actions/departures';
+import WeatherDay from '../Weather/WeatherDay';
 
 const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
     const [activeTab, setActiveTab] = useState('departures');
+    const [weatherInfo, setWeatherInfo] = useState({});
 
     useEffect(() => {
         loadArrivals();
         loadDepartures();
     }, [loadArrivals, loadDepartures]);
+
+    console.log(weatherInfo[0]);
+
+    const padNum = (num) => {
+        return num < 10 ? `0${num}` : num;
+    };
+
+    useEffect(() => {
+        fetch(
+            'https://dataservice.accuweather.com/forecasts/v1/daily/1day/293211?apikey=Yf3WKj1TwqWvjAKmBjtqR40z0gwW8kQw'
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                return setWeatherInfo(
+                    data.DailyForecasts.map((item) => {
+                        return {
+                            min: item.Temperature.Minimum.Value,
+                            max: item.Temperature.Maximum.Value,
+                            weatherType: item.Day.IconPhrase,
+                            weatherKey: padNum(item.Day.Icon),
+                            date: item.Date,
+                        };
+                    })
+                );
+            });
+    }, []);
 
     const columnsDepartures = [
         {
@@ -73,56 +101,74 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
                         </div>
                     </div>
 
-                    <div className='flights-container'>
-                        <ul id='ad-tabs' className='tabs'>
-                            <li className='tab'>
-                                <button
-                                    className={
-                                        activeTab === 'departures'
-                                            ? 'active'
-                                            : ''
-                                    }
-                                    onClick={() => setActiveTab('departures')}
-                                >
-                                    Departures
-                                </button>
-                            </li>
+                    <div className='row'>
+                        <div className='col-lg-9'>
+                            <div className='flights-container'>
+                                <ul id='ad-tabs' className='tabs'>
+                                    <li className='tab'>
+                                        <button
+                                            className={
+                                                activeTab === 'departures'
+                                                    ? 'active'
+                                                    : ''
+                                            }
+                                            onClick={() =>
+                                                setActiveTab('departures')
+                                            }
+                                        >
+                                            Departures
+                                        </button>
+                                    </li>
 
-                            <li className='tab'>
-                                <button
-                                    className={
-                                        activeTab === 'arrivals' ? 'active' : ''
-                                    }
-                                    onClick={() => setActiveTab('arrivals')}
-                                >
-                                    Arrivals
-                                </button>
-                            </li>
-                        </ul>
+                                    <li className='tab'>
+                                        <button
+                                            className={
+                                                activeTab === 'arrivals'
+                                                    ? 'active'
+                                                    : ''
+                                            }
+                                            onClick={() =>
+                                                setActiveTab('arrivals')
+                                            }
+                                        >
+                                            Arrivals
+                                        </button>
+                                    </li>
+                                </ul>
 
-                        {activeTab === 'departures' && (
-                            <div
-                                id='departurestab'
-                                className='tab-content active'
-                            >
-                                <Table
-                                    columns={columnsDepartures}
-                                    data={departures}
-                                />
+                                {activeTab === 'departures' && (
+                                    <div
+                                        id='departurestab'
+                                        className='tab-content active'
+                                    >
+                                        <Table
+                                            columns={columnsDepartures}
+                                            data={departures}
+                                        />
+                                    </div>
+                                )}
+
+                                {activeTab === 'arrivals' && (
+                                    <div
+                                        id='departurestab'
+                                        className='tab-content active'
+                                    >
+                                        <Table
+                                            columns={columnsArrivals}
+                                            data={arrivals}
+                                        />
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        </div>
 
-                        {activeTab === 'arrivals' && (
-                            <div
-                                id='departurestab'
-                                className='tab-content active'
-                            >
-                                <Table
-                                    columns={columnsArrivals}
-                                    data={arrivals}
-                                />
-                            </div>
-                        )}
+                        <div className='col-lg-3'>
+                            {weatherInfo[0] && (
+                                <div className='forecast-container v-02'>
+                                    <WeatherDay {...weatherInfo[0]} />
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

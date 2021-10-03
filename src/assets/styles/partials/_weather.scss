@@ -6,6 +6,18 @@
     overflow: hidden;
     border-radius: 10px;
 
+    &.v-02 {
+        .forecast {
+            .forecast-content {
+                padding: 30px 20px 20px;
+            }
+
+            .forecast-icon {
+                height: 30px;
+            }
+        }
+    }
+
     .forecast {
         display: table-cell;
         vertical-align: top;
