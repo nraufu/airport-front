@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const TopicBox = ({ position, img, title, description }) => {
     return (
@@ -15,7 +15,7 @@ const TopicBox = ({ position, img, title, description }) => {
 
                 <p>{description}</p>
 
-                <ul className='topic-box__content__button-list'>
+                {/* <ul className='topic-box__content__button-list'>
                     <li>
                         <Link
                             to='/services'
@@ -25,7 +25,7 @@ const TopicBox = ({ position, img, title, description }) => {
                             View More
                         </Link>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </div>
     );
