@@ -68,7 +68,7 @@ const Airlines = ({
             return;
         }
 
-        if (!/^[0-9]{10}$/.test(phone)) {
+        if (!/^[0-9]$/.test(phone)) {
             toast.error('Please enter a valid phone number');
             setIsSubmitting(false);
             return;
@@ -179,7 +179,7 @@ const Airlines = ({
                                 value={phone}
                                 elementConfig={{
                                     type: 'text',
-                                    placeholder: '+CountryCode ###',
+                                    placeholder: 'phone###',
                                 }}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
