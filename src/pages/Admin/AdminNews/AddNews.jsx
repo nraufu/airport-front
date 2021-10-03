@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { newsActions } from '../../../store/actions/news';
 import NewsForm from './NewsForm';
 
@@ -15,7 +16,10 @@ const AddNews = ({ createNews }) => {
             thumbnail: news.thumbnail,
         });
 
-        if (response) setResult(response);
+        if (response) {
+            setResult(response);
+            toast.success('News created successfully');
+        }
     };
 
     return (

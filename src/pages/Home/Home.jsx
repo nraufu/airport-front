@@ -59,25 +59,27 @@ const Home = ({ news, fetchNews }) => {
 
             <VisitRwanda />
 
-            <div className='spacing-md'>
-                <Title name='Latest News' />
-                <div className='container'>
-                    <div className='row justify-content-center'>
-                        {news.slice(0, 3).map((news, index) => (
-                            <CardNews key={index} {...news} />
-                        ))}
+            {news.length !== 0 && (
+                <div className='spacing-md'>
+                    <Title name='Latest News' />
+                    <div className='container'>
+                        <div className='row justify-content-center'>
+                            {news.slice(0, 3).map((news, index) => (
+                                <CardNews key={index} {...news} />
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className='text-center'>
+                        <Link
+                            to='/news'
+                            className='btn btn-primary text-white mt-5 text-center py-2 px-4'
+                        >
+                            Read More
+                        </Link>
                     </div>
                 </div>
-
-                <div className='text-center'>
-                    <Link
-                        to='/news'
-                        className='btn btn-primary text-white mt-5 text-center py-2 px-4'
-                    >
-                        Read More
-                    </Link>
-                </div>
-            </div>
+            )}
 
             <ImageLibrary />
 

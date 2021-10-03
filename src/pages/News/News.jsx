@@ -10,23 +10,30 @@ import bannerImg from '../../assets/images/news-bgimg.jpg';
 const News = ({ fetchNews, news }) => {
     const [isLoading, setIsLoading] = useState(false);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(async () => {
-        setIsLoading(true);
-        await fetchNews();
-        setIsLoading(false);
+    useEffect(() => {
+        async function fetchData() {
+            setIsLoading(true);
+            await fetchNews();
+            setIsLoading(false);
+        }
+        fetchData();
     }, [fetchNews]);
 
     return isLoading ? (
         <Loading />
     ) : (
         <>
-        <Banner   title='Latest News' bannerImg={bannerImg}/>
+            <Banner title='Latest News' bannerImg={bannerImg} />
             <div className='container spacing-sm'>
                 <div className='row justify-content-center align-items-center'>
                     {news.map((item, index) => {
                         return <CardNews key={index} {...item} />;
                     })}
+                    {news.length === 0 && (
+                        <h1 className='text-center'>
+                            No Updates currently available
+                        </h1>
+                    )}
                 </div>
             </div>
             <Footer />

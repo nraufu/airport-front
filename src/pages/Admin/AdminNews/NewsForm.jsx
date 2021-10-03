@@ -67,34 +67,6 @@ const NewsForm = ({ onSave, submitBtnLabel, data }) => {
                 <Grid.Col>
                     <Input
                         elementType='input'
-                        name='thumbnail'
-                        valueType='Thumbnail'
-                        value={thumbnail}
-                        elementConfig={{
-                            type: 'text',
-                            placeholder: 'thumbnail',
-                        }}
-                        onChange={(e) => setThumbnail(e.target.value)}
-                    />
-                </Grid.Col>
-
-                <Grid.Col>
-                    <Input
-                        elementType='input'
-                        name='img'
-                        valueType='Header Image'
-                        value={img}
-                        elementConfig={{
-                            type: 'text',
-                            placeholder: 'Header Image',
-                        }}
-                        onChange={(e) => setImg(e.target.value)}
-                    />
-                </Grid.Col>
-
-                <Grid.Col>
-                    <Input
-                        elementType='input'
                         name='description'
                         valueType='Description'
                         value={description}
@@ -106,7 +78,34 @@ const NewsForm = ({ onSave, submitBtnLabel, data }) => {
                     />
                 </Grid.Col>
 
-                <Grid.Col>
+                <Grid.Col lg={6}>
+                    <Input
+                        elementType='image'
+                        valueType='Thumbnail'
+                        value={thumbnail}
+                        elementConfig={{
+                            type: 'text',
+                            placeholder: 'thumbnail',
+                        }}
+                        onChange={({ base64 }) => setThumbnail(base64)}
+                    />
+                </Grid.Col>
+
+                <Grid.Col lg={6}>
+                    <Input
+                        elementType='image'
+                        name='img'
+                        valueType='Header Image'
+                        value={img}
+                        elementConfig={{
+                            type: 'text',
+                            placeholder: 'Header Image',
+                        }}
+                        onChange={({ base64 }) => setImg(base64)}
+                    />
+                </Grid.Col>
+
+                <Grid.Col className='mt-3'>
                     <div className='form-group'>
                         <label className='mb-1'>Body</label>
                         <textarea

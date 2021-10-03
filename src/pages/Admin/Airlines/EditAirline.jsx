@@ -19,8 +19,6 @@ function EditAirline({ airline, updateAirline }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    console.log(logoUrl);
-
     useEffect(() => {
         setIsLoading(true);
 

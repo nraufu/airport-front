@@ -68,6 +68,12 @@ const NewsList = ({ news, fetchNews, deleteNews }) => {
                                 ]}
                             />
                         ))}
+
+                        {news.length === 0 && (
+                            <div className='col-12 text-center'>
+                                <h3>No new Update Available At this time</h3>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

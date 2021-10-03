@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import airplaneWing from '../../assets/images/airplane-wing.jpg';
+import backgroundImg from '../../assets/images/blue-sky.jpg';
 import Footer from '../../parts/Footer/Footer';
 import { Table } from '../../components/UI';
 import { arrivalActions } from '../../store/actions/arrivals';
@@ -47,7 +47,7 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
         <>
             <div
                 className='flights-wrapper'
-                style={{ backgroundImage: `url(${airplaneWing})` }}
+                style={{ backgroundImage: `url(${backgroundImg})` }}
             >
                 <div className='container'>
                     <div className='flights-header'>

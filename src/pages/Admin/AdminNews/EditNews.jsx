@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import NewsForm from './NewsForm';
 import { newsActions } from '../../../store/actions/news';
+import { toast } from 'react-toastify';
 
 const AddNews = ({ updateNews, loadNews, newsId, currentNews }) => {
     const [result, setResult] = useState();
@@ -18,7 +19,10 @@ const AddNews = ({ updateNews, loadNews, newsId, currentNews }) => {
             thumbnail: news.thumbnail,
         });
 
-        if (response) setResult(response);
+        if (response) {
+            setResult(response);
+            toast.success('News updated successfully');
+        }
     };
 
     return (

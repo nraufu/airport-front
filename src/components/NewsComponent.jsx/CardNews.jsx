@@ -1,8 +1,16 @@
 import React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/UI';
 
-const CardNews = ({ _id, thumbnail, title, description, actionBtns }) => {
+const CardNews = ({
+    _id,
+    thumbnail,
+    title,
+    description,
+    createdAt,
+    actionBtns,
+}) => {
     return (
         <div className='col-lg-4 col-md-6 col-12 pb-30'>
             <div className='card news-item'>
@@ -10,6 +18,10 @@ const CardNews = ({ _id, thumbnail, title, description, actionBtns }) => {
                 <div className='card-body'>
                     <h5 className='card-title'>{title}</h5>
                     <p className='card-text'>{description}</p>
+
+                    <p className='news-item__date'>
+                        {moment(createdAt).format('MMMM Do YYYY')}
+                    </p>
 
                     {actionBtns ? (
                         <div className='d-flex align-items-center justify-content-center news-item--action-btns'>

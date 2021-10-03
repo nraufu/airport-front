@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Footer from '../../parts/Footer/Footer';
@@ -52,13 +53,22 @@ const ViewNews = ({ match, loadNews, currentNews }) => {
                             </a>
                         </li>
                     </ul>
+
+                    <p>
+                        Published on :{' '}
+                        <span className='text-muted'>
+                            {moment(currentNews.createdAt).format(
+                                'MMMM Do YYYY'
+                            )}
+                        </span>
+                    </p>
                 </div>
 
                 <div className='img-wrapper'>
                     <img src={currentNews.img} alt='news' />
                 </div>
 
-                <p className='py-5'>{currentNews.body}</p>
+                <p className='py-5 body-text'>{currentNews.body}</p>
             </div>
             <Footer />
         </>
