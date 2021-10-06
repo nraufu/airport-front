@@ -16,6 +16,7 @@ import Loading from './components/Loading/Loading';
 import NotFound from './pages/NotFound/NotFound';
 import News from './pages/News/News';
 import ViewNews from './pages/News/ViewNews';
+import { PrintContent } from './components/print-content/';
 
 const App = ({ location }) => {
     const [admin, setAdmin] = useState();
@@ -37,6 +38,7 @@ const App = ({ location }) => {
         <>
             <ToastContainer bodyClassName='toastBody' />
             <Header isAuthenticated={admin} />
+            <PrintContent.PrintHeader />
 
             <TransitionGroup component='main' className='page-main'>
                 <CSSTransition
