@@ -19,7 +19,7 @@ function ViewAirline(props) {
         country,
         flights,
         website,
-        headerQuarterLocation,
+        headQuarterLocation,
         phone,
         createdAt,
         updatedAt,
@@ -82,7 +82,7 @@ function ViewAirline(props) {
 
                 <Grid.Col lg={6}>
                     <ContentBox title='Header Quarter Location'>
-                        {headerQuarterLocation}
+                        {headQuarterLocation}
                     </ContentBox>
                 </Grid.Col>
 

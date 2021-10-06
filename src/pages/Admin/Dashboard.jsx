@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard'>
-            <nav className='sidebar'>
+            <nav className='sidebar no-print'>
                 <ul className='side-nav'>
                     <li className={`side-nav__item ${isActive('dashboard')}`}>
                         <NavLink

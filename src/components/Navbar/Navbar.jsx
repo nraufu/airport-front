@@ -9,8 +9,12 @@ const Navbar = ({ isAuthenticated, location }) => {
     const isDashboard = location.pathname.includes('/dashboard');
 
     return (
-        <nav className='navbar navbar-expand-lg'>
-            <div className='container'>
+        <nav className='navbar navbar-expand-lg no-print'>
+            <div
+                className={
+                    isAuthenticated ? 'container-fluid px-5' : 'container'
+                }
+            >
                 <NavLink className='navbar-brand' to='/'>
                     <img src={Logo} alt='airport logo' />
                 </NavLink>

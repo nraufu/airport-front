@@ -87,7 +87,7 @@ function EditDeparture({
         </div>
     ) : (
         <Row>
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Select
                     label='Airline'
                     value={airlineName}
@@ -99,7 +99,7 @@ function EditDeparture({
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Select
                     label='Flight'
                     value={flight}
@@ -111,7 +111,7 @@ function EditDeparture({
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='destination'
@@ -125,7 +125,7 @@ function EditDeparture({
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='scheduled'
@@ -139,7 +139,7 @@ function EditDeparture({
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='status'
@@ -153,7 +153,7 @@ function EditDeparture({
                 />
             </Col>
 
-            <Col lg={4}>
+            <Col lg={12}>
                 <Button
                     label='Update'
                     className='btn btn-primary text-white mt-4'

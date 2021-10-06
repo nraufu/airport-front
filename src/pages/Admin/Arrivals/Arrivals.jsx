@@ -9,6 +9,7 @@ import { airlineActions } from '../../../store/actions/airlines';
 import {
     Input,
     Button,
+    PrintButton,
     Table,
     Select,
     ActionButtons,
@@ -97,14 +98,24 @@ const Arrivals = ({
             content: (item) => (
                 <img src={item.airlineLogo} alt='logo' className='logo-image' />
             ),
+            noSort: true,
         },
         { label: 'Airline Name', path: 'airlineName' },
         { label: 'Flight', path: 'flight' },
         { label: 'Origin', path: 'origin' },
-        { label: 'Scheduled', path: 'scheduled' },
-        { label: 'Status', path: 'status' },
+        { label: 'Scheduled', path: 'scheduled', noSort: true },
+        {
+            label: 'Status',
+            path: 'status',
+            noSort: true,
+            content: (item) => (
+                <span className='text-primary'>{item.status}</span>
+            ),
+        },
         {
             label: 'action',
+            path: 'actionCol',
+            noSort: true,
             content: (item) => (
                 <ActionButtons
                     onView={() => ViewArrivalModal(item)}
@@ -140,87 +151,95 @@ const Arrivals = ({
 
     return (
         <>
-            <h1 className='title-secondary mb-5'>Arrivals</h1>
-            <AccordionCard header='+ Add Arrival'>
-                <Container>
-                    <Row>
-                        <Col xs={12} md={6} lg={4}>
-                            <Select
-                                label='Airline'
-                                value={airlineName}
-                                onChange={onAirlineChange}
-                                options={airlines.map((airline) => ({
-                                    value: airline.name,
-                                    label: airline.name,
-                                }))}
-                            />
-                        </Col>
+            <div className='d-flex justify-content-between align-items-center title-secondary'>
+                <h1 className='mb-0'>Arrivals</h1>
+                <PrintButton className='btn btn-secondary ml-auto' />
+            </div>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Select
-                                label='Flight'
-                                value={flight}
-                                onChange={(e) => setFlight(e.target.value)}
-                                options={flightsList.map((flight) => ({
-                                    value: flight,
-                                    label: flight,
-                                }))}
-                            />
-                        </Col>
+            <div className='no-print'>
+                <AccordionCard header='+ Add Arrival'>
+                    <Container>
+                        <Row>
+                            <Col xs={12} md={6} lg={4}>
+                                <Select
+                                    label='Airline'
+                                    value={airlineName}
+                                    onChange={onAirlineChange}
+                                    options={airlines.map((airline) => ({
+                                        value: airline.name,
+                                        label: airline.name,
+                                    }))}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='origin'
-                                valueType='Origin'
-                                value={origin}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Origin',
-                                }}
-                                onChange={(e) => setOrigin(e.target.value)}
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Select
+                                    label='Flight'
+                                    value={flight}
+                                    onChange={(e) => setFlight(e.target.value)}
+                                    options={flightsList.map((flight) => ({
+                                        value: flight,
+                                        label: flight,
+                                    }))}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='scheduled'
-                                valueType='Scheduled'
-                                value={scheduled}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Scheduled',
-                                }}
-                                onChange={(e) => setScheduled(e.target.value)}
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='origin'
+                                    valueType='Origin'
+                                    value={origin}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Origin',
+                                    }}
+                                    onChange={(e) => setOrigin(e.target.value)}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='status'
-                                valueType='Status'
-                                value={status}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Status',
-                                }}
-                                onChange={(e) => setStatus(e.target.value)}
-                            />
-                        </Col>
-                    </Row>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='scheduled'
+                                    valueType='Scheduled'
+                                    value={scheduled}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Scheduled',
+                                    }}
+                                    onChange={(e) =>
+                                        setScheduled(e.target.value)
+                                    }
+                                />
+                            </Col>
 
-                    <Button
-                        label='Submit'
-                        className='btn btn-primary text-white mt-4'
-                        isLoading={isSubmitting}
-                        onClick={addArrival}
-                    />
-                </Container>
-            </AccordionCard>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='status'
+                                    valueType='Status'
+                                    value={status}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Status',
+                                    }}
+                                    onChange={(e) => setStatus(e.target.value)}
+                                />
+                            </Col>
+                        </Row>
 
-            <div className='d-flex justify-content-between align-items-center table-header-count'>
+                        <Button
+                            label='Submit'
+                            className='btn btn-primary text-white mt-4'
+                            isLoading={isSubmitting}
+                            onClick={addArrival}
+                        />
+                    </Container>
+                </AccordionCard>
+            </div>
+
+            <div className='d-flex justify-content-between align-items-center table-header-count no-print'>
                 <p className='count'>
                     Showing <span className='text-primary'>{totalCount}</span>{' '}
                     Arrivals Flights

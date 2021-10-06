@@ -33,9 +33,14 @@ class TableHeader extends Component {
                 <tr>
                     {this.props.columns.map((column, index) => (
                         <th
-                            className='clickable'
+                            className={`clickable ${
+                                column.path === 'actionCol' && 'no-print'
+                            }`}
                             key={column.path || index}
-                            onClick={() => this.raiseSort(column.path)}
+                            onClick={() => {
+                                if (column.noSort) return;
+                                this.raiseSort(column.path);
+                            }}
                         >
                             {column.label} {this.renderSortIcon(column)}
                         </th>

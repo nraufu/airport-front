@@ -1,5 +1,6 @@
 import ConfirmationBox from './AlertBox/ConfirmationBox';
 import Button from './Button/Button';
+import PrintButton from './Button/PrintButton';
 import Input from './Input/Input';
 import AddableInput from './Input/AddableInput';
 import Modal from './Modal/Modal';
@@ -9,4 +10,16 @@ import Table from './Table/Table';
 import ActionButtons from './Table/ActionButtons';
 import Title from './Title/Title';
 
-export {ConfirmationBox, Button, Input, Modal, SearchBox, Select, Table, Title, AddableInput, ActionButtons};
+export {
+    ConfirmationBox,
+    Button,
+    Input,
+    Modal,
+    SearchBox,
+    Select,
+    Table,
+    Title,
+    AddableInput,
+    ActionButtons,
+    PrintButton,
+};

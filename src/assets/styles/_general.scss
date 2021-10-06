@@ -89,9 +89,12 @@ button {
 /* --------------------- title --------------------- */
 .title {
     &-secondary {
-        font-size: 2.5rem;
-        text-transform: uppercase;
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
         padding-bottom: 1rem;
+        margin-bottom: 3rem;
         border-bottom: 1px solid $gray-200;
     }
 
@@ -117,4 +120,35 @@ button {
         overflow: hidden;
         height: 0;
     }
+}
+
+
+/* Print Styles */
+.no-print {
+
+    @media print {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+@media print {
+
+    body,
+    html {
+        color: $black;
+        border-color: $black;
+    }
+
+    table,
+    .table {
+        overflow: hidden;
+
+        th,
+        td {
+            color: $black;
+            border: 1px solid $black !important;
+        }
+    }
+
 }

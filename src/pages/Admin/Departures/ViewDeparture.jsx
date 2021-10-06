@@ -14,7 +14,7 @@ function ViewDeparture(props) {
 
     const {
         _id,
-        airline,
+        airlineLogo,
         airlineName,
         flight,
         destination,
@@ -51,7 +51,7 @@ function ViewDeparture(props) {
             <Grid.Row>
                 <Grid.Col lg={4}>
                     <ContentBox title='Logo'>
-                        <img src={airline} className='img-fluid' alt='' />
+                        <img src={airlineLogo} className='img-fluid' alt='' />
                     </ContentBox>
                 </Grid.Col>
 
@@ -79,7 +79,7 @@ function ViewDeparture(props) {
                     label='Edit'
                     className='btn btn-dark m-3'
                     icon='lnir lnir-pencil'
-                    onClick={() => EditDepartureModal(airline)}
+                    onClick={() => EditDepartureModal(departure)}
                 />
 
                 <Button

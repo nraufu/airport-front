@@ -82,7 +82,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
         </div>
     ) : (
         <Row>
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Select
                     label='Airline'
                     value={airlineName}
@@ -94,7 +94,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Select
                     label='Flight'
                     value={flight}
@@ -106,7 +106,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='origin'
@@ -120,7 +120,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='scheduled'
@@ -134,7 +134,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
                 />
             </Col>
 
-            <Col xs={12} md={6} lg={4}>
+            <Col xs={12} md={6}>
                 <Input
                     elementType='input'
                     name='status'
@@ -148,7 +148,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
                 />
             </Col>
 
-            <Col lg={4}>
+            <Col md={12}>
                 <Button
                     label='Update'
                     className='btn btn-primary text-white mt-4'

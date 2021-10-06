@@ -17,8 +17,6 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
         loadDepartures();
     }, [loadArrivals, loadDepartures]);
 
-    console.log(weatherInfo[0]);
-
     const padNum = (num) => {
         return num < 10 ? `0${num}` : num;
     };

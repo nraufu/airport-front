@@ -12,6 +12,7 @@ import {
     AddableInput,
     Input,
     Button,
+    PrintButton,
     Table,
     Select,
     ActionButtons,
@@ -68,7 +69,7 @@ const Airlines = ({
             return;
         }
 
-        if (!/^[0-9]$/.test(phone)) {
+        if (!/^[0-9]{10}$/.test(phone)) {
             toast.error('Please enter a valid phone number');
             setIsSubmitting(false);
             return;
@@ -112,12 +113,27 @@ const Airlines = ({
         { label: 'Name', path: 'name' },
         { label: 'Country', path: 'country' },
         {
+            label: 'Website',
+            path: 'website',
+            noSort: true,
+            content: (item) => <a href={item.website}>{item.website}</a>,
+        },
+        {
+            label: 'Phone',
+            path: 'phone',
+            noSort: true,
+            content: (item) => <a href={`tel:${item.phone}`}>{item.phone}</a>,
+        },
+        {
             label: 'Total Flights',
             path: 'flights',
+            noSort: true,
             content: (item) => <span>{item.flights.length}</span>,
         },
         {
             label: 'action',
+            path: 'actionCol',
+            noSort: true,
             content: (item) => (
                 <ActionButtons
                     onView={() => ViewAirlineModal(item)}
@@ -153,112 +169,118 @@ const Airlines = ({
 
     return (
         <>
-            <h1 className='title-secondary mb-5'>Airlines</h1>
-            <AccordionCard header='+ Add Airline'>
-                <Container>
-                    <Row>
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='name'
-                                valueType='Name'
-                                value={name}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Name',
-                                }}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </Col>
+            <div className='d-flex justify-content-between align-items-center title-secondary'>
+                <h1 className='mb-0'>Airlines</h1>
+                <PrintButton className='btn btn-secondary ml-auto' />
+            </div>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='phone'
-                                valueType='Phone'
-                                value={phone}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'phone###',
-                                }}
-                                onChange={(e) => setPhone(e.target.value)}
-                            />
-                        </Col>
+            <div className='no-print'>
+                <AccordionCard header='+ Add Airline'>
+                    <Container>
+                        <Row>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='name'
+                                    valueType='Name'
+                                    value={name}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Name',
+                                    }}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Select
-                                label='Country'
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
-                                options={countriesList.map((country) => ({
-                                    value: country.name,
-                                    label: country.name,
-                                }))}
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='phone'
+                                    valueType='Phone'
+                                    value={phone}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'phone###',
+                                    }}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='website'
-                                valueType='Airline Website'
-                                value={website}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Website',
-                                }}
-                                onChange={(e) => setWebsite(e.target.value)}
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Select
+                                    label='Country'
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    options={countriesList.map((country) => ({
+                                        value: country.name,
+                                        label: country.name,
+                                    }))}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='input'
-                                name='headQuarterLocation'
-                                valueType='Head Quarter Address'
-                                value={headQuarterLocation}
-                                elementConfig={{
-                                    type: 'text',
-                                    placeholder: 'Head Quarter Address',
-                                }}
-                                onChange={(e) =>
-                                    setheadQuarterLocation(e.target.value)
-                                }
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='website'
+                                    valueType='Airline Website'
+                                    value={website}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Website',
+                                    }}
+                                    onChange={(e) => setWebsite(e.target.value)}
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={4}>
-                            <Input
-                                elementType='image'
-                                valueType='Logo image'
-                                name='logo'
-                                type='file'
-                                multiple={false}
-                                onDone={({ base64 }) => setLogo(base64)}
-                                accept='image/*'
-                            />
-                        </Col>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='headQuarterLocation'
+                                    valueType='Head Quarter Address'
+                                    value={headQuarterLocation}
+                                    elementConfig={{
+                                        type: 'text',
+                                        placeholder: 'Head Quarter Address',
+                                    }}
+                                    onChange={(e) =>
+                                        setheadQuarterLocation(e.target.value)
+                                    }
+                                />
+                            </Col>
 
-                        <Col xs={12} md={6} lg={5}>
-                            <AddableInput
-                                label='Flights'
-                                placeholder='Enter Airline flights'
-                                value={flights}
-                                onChange={setFlights}
-                            />
-                        </Col>
-                    </Row>
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='image'
+                                    valueType='Logo image'
+                                    name='logo'
+                                    type='file'
+                                    multiple={false}
+                                    onDone={({ base64 }) => setLogo(base64)}
+                                    accept='image/*'
+                                />
+                            </Col>
 
-                    <Button
-                        label='Submit'
-                        className='btn btn-primary text-white mt-4'
-                        isLoading={isSubmitting}
-                        onClick={addAirline}
-                    />
-                </Container>
-            </AccordionCard>
+                            <Col xs={12} md={6} lg={5}>
+                                <AddableInput
+                                    label='Flights'
+                                    placeholder='Enter Airline flights'
+                                    value={flights}
+                                    onChange={setFlights}
+                                />
+                            </Col>
+                        </Row>
 
-            <div className='d-flex justify-content-between align-items-center table-header-count'>
+                        <Button
+                            label='Submit'
+                            className='btn btn-primary text-white mt-4'
+                            isLoading={isSubmitting}
+                            onClick={addAirline}
+                        />
+                    </Container>
+                </AccordionCard>
+            </div>
+
+            <div className='d-flex justify-content-between align-items-center table-header-count no-print'>
                 <p className='count'>
                     Showing <span className='text-primary'>{totalCount}</span>{' '}
                     Airlines
