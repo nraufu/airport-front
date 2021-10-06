@@ -12,6 +12,7 @@ import { airlineActions } from '../../../store/actions/airlines';
 function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
     const [airlineLogo, setAirlineLogo] = useState('');
     const [airlineName, setAirlineName] = useState('');
+    const [airlineWebsite, setAirlineWebsite] = useState('');
     const [flight, setFlight] = useState('');
     const [flightsList, setFlightsList] = useState([]);
     const [origin, setOrigin] = useState('');
@@ -37,6 +38,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
         setTimeout(() => {
             setAirlineLogo(arrival.airlineLogo);
             setAirlineName(arrival.airlineName);
+            setAirlineWebsite(arrival.airlineWebsite);
             setFlight(arrival.flight);
             setFlightsList(findAirlineFlights(arrival.airlineName));
             setOrigin(arrival.origin);
@@ -61,6 +63,7 @@ function EditArrival({ airlines, arrival, updateArrival, fetchAirlines }) {
         const result = await updateArrival(arrival._id, {
             airlineLogo,
             airlineName,
+            airlineWebsite,
             flight,
             origin,
             scheduled,

@@ -33,6 +33,7 @@ const Airlines = ({
     const [headQuarterLocation, setheadQuarterLocation] = useState('');
     const [phone, setPhone] = useState('');
     const [flights, setFlights] = useState([]);
+    const [email, setEmail] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +53,7 @@ const Airlines = ({
             website === '' ||
             headQuarterLocation === '' ||
             phone === '' ||
+            email === '' ||
             flights.length === 0
         ) {
             toast.error('Please fill all the fields');
@@ -75,12 +77,23 @@ const Airlines = ({
             return;
         }
 
+        if (
+            !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
+                email
+            )
+        ) {
+            toast.error('Please enter a valid email');
+            setIsSubmitting(false);
+            return;
+        }
+
         const result = await createAirline({
             name,
             logoImg: logo,
             country,
             flights,
             website,
+            email,
             headQuarterLocation,
             phone,
         });
@@ -117,6 +130,13 @@ const Airlines = ({
             path: 'website',
             noSort: true,
             content: (item) => <a href={item.website}>{item.website}</a>,
+        },
+        {
+            label: 'Email',
+            path: 'email',
+            content: (item) => (
+                <a href={`mailto:${item.email}`}>{item.email}</a>
+            ),
         },
         {
             label: 'Phone',
@@ -257,6 +277,20 @@ const Airlines = ({
                                     multiple={false}
                                     onDone={({ base64 }) => setLogo(base64)}
                                     accept='image/*'
+                                />
+                            </Col>
+
+                            <Col xs={12} md={6} lg={4}>
+                                <Input
+                                    elementType='input'
+                                    name='email'
+                                    valueType='Email'
+                                    value={email}
+                                    elementConfig={{
+                                        type: 'email',
+                                        placeholder: 'Email',
+                                    }}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Col>
 

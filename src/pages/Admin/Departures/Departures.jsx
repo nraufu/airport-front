@@ -29,6 +29,7 @@ const Departures = ({
 }) => {
     const [airlineLogo, setAirlineLogo] = useState('');
     const [airlineName, setAirlineName] = useState('');
+    const [airlineWebsite, setAirlineWebsite] = useState('');
     const [flight, setFlight] = useState('');
     const [flightsList, setFlightsList] = useState([]);
     const [destination, setDestination] = useState('');
@@ -50,6 +51,7 @@ const Departures = ({
         );
         setAirlineLogo(selectedAirline.logoImgUri);
         setAirlineName(selectedAirline.name);
+        setAirlineWebsite(selectedAirline.website);
         setFlightsList(selectedAirline.flights);
     };
 
@@ -69,6 +71,7 @@ const Departures = ({
         const result = await createDeparture({
             airlineLogo,
             airlineName,
+            airlineWebsite,
             flight,
             destination,
             scheduled,

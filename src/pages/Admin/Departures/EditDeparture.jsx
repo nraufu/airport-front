@@ -17,6 +17,7 @@ function EditDeparture({
 }) {
     const [airlineLogo, setAirlineLogo] = useState('');
     const [airlineName, setAirlineName] = useState('');
+    const [airlineWebsite, setAirlineWebsite] = useState('');
     const [flight, setFlight] = useState('');
     const [flightsList, setFlightsList] = useState([]);
     const [destination, setDestination] = useState('');
@@ -42,6 +43,7 @@ function EditDeparture({
         setTimeout(() => {
             setAirlineLogo(departure.airlineLogo);
             setAirlineName(departure.airlineName);
+            setAirlineWebsite(departure.airlineWebsite);
             setFlight(departure.flight);
             setFlightsList(findAirlineFlights(departure.airlineName));
             setDestination(departure.destination);
@@ -66,6 +68,7 @@ function EditDeparture({
         const result = await updateDeparture(departure._id, {
             airlineLogo,
             airlineName,
+            airlineWebsite,
             flight,
             destination,
             scheduled,

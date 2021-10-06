@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { airlineActions } from '../../../store/actions/airlines';
 import { Input, Button, AddableInput } from '../../../components/UI';
 import { ContentBox } from '../../../components/Layouts';
-import { Grid } from '../../../components/Grid';
 import Spinner from '../../../components/Spinner/Spinner';
 
 function EditAirline({ airline, updateAirline }) {
@@ -13,6 +12,7 @@ function EditAirline({ airline, updateAirline }) {
     const [logoUrl, setLogoUrl] = useState('');
     const [country, setCountry] = useState('');
     const [website, setWebsite] = useState('');
+    const [email, setEmail] = useState('');
     const [headQuarterLocation, setHeadQuarterLocation] = useState('');
     const [phone, setPhone] = useState('');
     const [flights, setFlights] = useState([]);
@@ -30,6 +30,7 @@ function EditAirline({ airline, updateAirline }) {
             setHeadQuarterLocation(airline.headQuarterLocation);
             setPhone(airline.phone);
             setWebsite(airline.website);
+            setEmail(airline.email);
         }
 
         setTimeout(() => {
@@ -46,7 +47,8 @@ function EditAirline({ airline, updateAirline }) {
             country === '' ||
             website === '' ||
             headQuarterLocation === '' ||
-            phone === ''
+            phone === '' ||
+            email === ''
         ) {
             toast.error('Please fill all fields');
             setIsSubmitting(false);
@@ -61,6 +63,7 @@ function EditAirline({ airline, updateAirline }) {
             website,
             headQuarterLocation,
             phone,
+            email,
         });
 
         if (result.status === 'Success') {
@@ -89,18 +92,6 @@ function EditAirline({ airline, updateAirline }) {
                         placeholder: 'Name',
                     }}
                     onChange={(e) => setName(e.target.value)}
-                />
-            </Col>
-
-            <Col lg={6}>
-                <Input
-                    elementType='image'
-                    valueType='Logo image'
-                    name='logo'
-                    type='file'
-                    multiple={false}
-                    onDone={({ base64 }) => setLogoUrl(base64)}
-                    value={logoUrl}
                 />
             </Col>
 
@@ -161,6 +152,20 @@ function EditAirline({ airline, updateAirline }) {
             </Col>
 
             <Col lg={6}>
+                <Input
+                    elementType='input'
+                    name='email'
+                    valueType='Email'
+                    value={email}
+                    elementConfig={{
+                        type: 'text',
+                        placeholder: 'Email',
+                    }}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </Col>
+
+            <Col lg={12} className='mb-4'>
                 <AddableInput
                     label='Flights'
                     placeholder='Enter Airline flights'
@@ -169,11 +174,23 @@ function EditAirline({ airline, updateAirline }) {
                 />
             </Col>
 
-            <Grid.Col lg={6} className='mb-3'>
+            <Col lg={6}>
+                <Input
+                    elementType='image'
+                    valueType='Logo image'
+                    name='logo'
+                    type='file'
+                    multiple={false}
+                    onDone={({ base64 }) => setLogoUrl(base64)}
+                    value={logoUrl}
+                />
+            </Col>
+
+            <Col lg={6} className='mb-3'>
                 <ContentBox title='Logo Image'>
                     <img src={logoUrl} className='img-fluid' alt='' />
                 </ContentBox>
-            </Grid.Col>
+            </Col>
 
             <Col lg={12}>
                 <Button

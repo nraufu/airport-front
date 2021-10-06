@@ -29,6 +29,7 @@ const Arrivals = ({
 }) => {
     const [airlineLogo, setAirlineLogo] = useState('');
     const [airlineName, setAirlineName] = useState('');
+    const [airlineWebsite, setAirlineWebsite] = useState('');
     const [flight, setFlight] = useState('');
     const [flightsList, setFlightsList] = useState([]);
     const [origin, setOrigin] = useState('');
@@ -50,6 +51,7 @@ const Arrivals = ({
         );
         setAirlineLogo(selectedAirline.logoImgUri);
         setAirlineName(selectedAirline.name);
+        setAirlineWebsite(selectedAirline.website);
         setFlightsList(selectedAirline.flights);
     };
 
@@ -71,6 +73,7 @@ const Arrivals = ({
         const result = await createArrival({
             airlineLogo,
             airlineName,
+            airlineWebsite,
             flight,
             origin,
             scheduled,
