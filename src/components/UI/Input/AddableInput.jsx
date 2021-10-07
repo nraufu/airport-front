@@ -20,6 +20,11 @@ const AddableInput = ({ label, placeholder, value, onChange }) => {
             ) {
                 return;
             }
+
+            if (!/^[a-zA-Z]{2}[0-9]{3}$/.test(val)) {
+                return;
+            }
+
             onChange([...value, val]);
             tagInput.current.value = null;
         }
@@ -55,7 +60,8 @@ const AddableInput = ({ label, placeholder, value, onChange }) => {
 
                 {(typeof value === 'undefined' || value.length === 0) && (
                     <span className='addable-input__empty-tags'>
-                        No items - Add items using the input above.
+                        No items - Add items using the input above. (must
+                        contain two letters followed by three numbers)
                     </span>
                 )}
             </div>

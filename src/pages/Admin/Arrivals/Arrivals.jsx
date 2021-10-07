@@ -59,6 +59,14 @@ const Arrivals = ({
         setIsSubmitting(true);
 
         if (
+            origin.toLowerCase() === 'kigali' ||
+            origin.toLowerCase() === 'rwanda'
+        ) {
+            toast.error('Origin is invalid');
+            return;
+        }
+
+        if (
             airlineName === '' ||
             flight === '' ||
             origin === '' ||
@@ -106,7 +114,7 @@ const Arrivals = ({
         { label: 'Airline Name', path: 'airlineName' },
         { label: 'Flight', path: 'flight' },
         { label: 'Origin', path: 'origin' },
-        { label: 'Scheduled', path: 'scheduled', noSort: true },
+        { label: 'Scheduled', path: 'scheduled' },
         {
             label: 'Status',
             path: 'status',

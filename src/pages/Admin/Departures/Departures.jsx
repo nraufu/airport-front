@@ -59,6 +59,14 @@ const Departures = ({
         setIsSubmitting(true);
 
         if (
+            destination.toLowerCase() === 'kigali' ||
+            destination.toLowerCase() === 'rwanda'
+        ) {
+            toast.error('destination is invalid');
+            return;
+        }
+
+        if (
             (airlineName === '' || flight === '' || destination === '',
             scheduled === '',
             status === '')
@@ -104,7 +112,7 @@ const Departures = ({
         { label: 'Airline Name', path: 'airlineName' },
         { label: 'Flight', path: 'flight' },
         { label: 'Destination', path: 'destination' },
-        { label: 'Scheduled', path: 'scheduled', noSort: true },
+        { label: 'Scheduled', path: 'scheduled' },
         {
             label: 'Status',
             path: 'status',
