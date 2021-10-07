@@ -68,6 +68,18 @@ const Input = (props) => {
             );
             break;
 
+        case 'pdf':
+            inputElement = (
+                <input
+                    type='file'
+                    className='form-control'
+                    onChange={onChange}
+                    accept='application/pdf'
+                    {...props}
+                />
+            );
+            break;
+
         default:
             break;
     }

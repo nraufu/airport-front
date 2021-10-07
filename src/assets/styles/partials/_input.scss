@@ -76,3 +76,13 @@
         color: $gray-500;
     }
 }
+
+/*------------------ form-select -----------*/
+.form-select {
+    &-lg {
+        padding-bottom: 0.6rem !important;
+        padding-top: 0.6rem !important;
+        font-size: 1.4rem !important;
+        color: $gray-600 !important;
+    }
+}

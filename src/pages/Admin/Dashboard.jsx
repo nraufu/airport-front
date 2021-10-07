@@ -5,6 +5,7 @@ import Airlines from './Airlines/Airlines';
 import Arrivals from './Arrivals/Arrivals';
 import Departures from './Departures/Departures';
 import General from './General';
+import SendReports from './SendReports/SendReports';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -67,6 +68,16 @@ const Dashboard = () => {
                             <span>News</span>
                         </NavLink>
                     </li>
+                    <li className={`side-nav__item ${isActive('reports')}`}>
+                        <NavLink
+                            to='/dashboard/reports'
+                            className='side-nav__link'
+                            onClick={() => setActiveTab('reports')}
+                        >
+                            <i className='lnr lnr-envelope side-nav__icon' />
+                            <span>Send Reports</span>
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
 
@@ -76,6 +87,7 @@ const Dashboard = () => {
                 {activeTab === 'departures' && <Departures />}
                 {activeTab === 'arrivals' && <Arrivals />}
                 {activeTab === 'news' && <NewsList />}
+                {activeTab === 'reports' && <SendReports />}
             </main>
         </div>
     );

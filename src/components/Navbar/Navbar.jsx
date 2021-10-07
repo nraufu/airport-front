@@ -2,6 +2,7 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { NavLink, withRouter } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
+import { ChangePasswordModal } from '../../pages/Admin/ChangePassword/modals';
 import { deleteToken } from '../../utils/authentication';
 import NavItem from './NavItem';
 
@@ -10,11 +11,7 @@ const Navbar = ({ isAuthenticated, location }) => {
 
     return (
         <nav className='navbar navbar-expand-lg no-print'>
-            <div
-                className={
-                    isAuthenticated ? 'container-fluid px-5' : 'container'
-                }
-            >
+            <div className={isAuthenticated ? 'container-fluid' : 'container'}>
                 <NavLink className='navbar-brand' to='/'>
                     <img src={Logo} alt='airport logo' />
                 </NavLink>
@@ -43,6 +40,11 @@ const Navbar = ({ isAuthenticated, location }) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
+                            <Dropdown.Item
+                                onClick={() => ChangePasswordModal()}
+                            >
+                                Change Password
+                            </Dropdown.Item>
                             <Dropdown.Item
                                 href='/'
                                 onClick={() => deleteToken()}
