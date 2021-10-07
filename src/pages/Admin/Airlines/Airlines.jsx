@@ -180,7 +180,6 @@ const Airlines = ({
     ];
 
     const { totalCount, pagedData } = getPagedData(
-        'name',
         currentPage,
         sortColumn,
         searchQuery,

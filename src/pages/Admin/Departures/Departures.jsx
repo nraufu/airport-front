@@ -143,7 +143,6 @@ const Departures = ({
     ];
 
     const { totalCount, pagedData } = getPagedData(
-        'airlineName',
         currentPage,
         sortColumn,
         searchQuery,

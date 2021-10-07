@@ -145,7 +145,6 @@ const Arrivals = ({
     ];
 
     const { totalCount, pagedData } = getPagedData(
-        'airlineName',
         currentPage,
         sortColumn,
         searchQuery,
