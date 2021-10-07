@@ -46,7 +46,7 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
             label: 'AIRLINE',
             path: 'airlineLogo',
             content: (item) => (
-                <a href={item.airlineWebsite}>
+                <a href={item.airlineWebsite} target='_blank' rel='noreferrer'>
                     <img
                         src={item.airlineLogo}
                         alt='logo'
@@ -58,7 +58,11 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
         { label: 'FLIGHT', path: 'flight' },
         { label: 'TO', path: 'destination' },
         { label: 'SCHEDULED', path: 'scheduled' },
-        { label: 'STATUS', path: 'status' },
+        {
+            label: 'STATUS',
+            path: 'status',
+            content: (item) => <span className='fw-bold'>{item.status}</span>,
+        },
     ];
 
     const columnsArrivals = [
@@ -66,7 +70,7 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
             label: 'AIRLINE',
             path: 'airlineLogo',
             content: (item) => (
-                <a href={item.airlineWebsite}>
+                <a href={item.airlineWebsite} target='_blank' rel='noreferrer'>
                     <img
                         src={item.airlineLogo}
                         alt='logo'
@@ -78,10 +82,12 @@ const Schedules = ({ arrivals, departures, loadArrivals, loadDepartures }) => {
         { label: 'FLIGHT', path: 'flight' },
         { label: 'FROM', path: 'origin' },
         { label: 'SCHEDULED', path: 'scheduled' },
-        { label: 'STATUS', path: 'status' },
+        {
+            label: 'STATUS',
+            path: 'status',
+            content: (item) => <span className='fw-bold'>{item.status}</span>,
+        },
     ];
-
-    console.log(departures);
 
     return (
         <>

@@ -129,7 +129,11 @@ const Airlines = ({
             label: 'Website',
             path: 'website',
             noSort: true,
-            content: (item) => <a href={item.website}>{item.website}</a>,
+            content: (item) => (
+                <a href={item.website} target='_blank' rel='noreferrer'>
+                    {item.website}
+                </a>
+            ),
         },
         {
             label: 'Email',
