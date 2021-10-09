@@ -20,7 +20,13 @@ class TableBody extends Component {
                 {data.map((item) => (
                     <tr key={item._id}>
                         {columns.map((column) => (
-                            <td key={this.createKey(item, column)}>
+                            <td
+                                key={this.createKey(item, column)}
+                                className={`align-middle ${
+                                    column.path === 'actionCol' &&
+                                    'no-print action-col'
+                                }`}
+                            >
                                 {this.renderCell(item, column)}
                             </td>
                         ))}

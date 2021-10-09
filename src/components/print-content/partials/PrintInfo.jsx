@@ -10,7 +10,7 @@ const PrintInfo = () => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     let timeString = `${hours}:${minutes}`;
-    //if time is less than 10, add a 0 before the time
+
     if (hours < 10) {
         timeString = `0${hours}:${minutes}`;
     }
@@ -24,7 +24,9 @@ const PrintInfo = () => {
                 <strong>Date : {dateString}</strong>
             </p>
             <p className='mb-0'>Printed By : Admin</p>
-            <p className='mb-0'>Printed at : 24/12/2021 {timeString}</p>
+            <p className='mb-0'>
+                Printed at : {dateString} {timeString}
+            </p>
         </div>
     );
 };
