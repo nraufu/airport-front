@@ -5,6 +5,7 @@ import arrivalReducer from './arrivals';
 import departureReducer from './departures';
 import newsReducer from './news';
 import passwordReducer from './passwords';
+import reportReducer from './reports';
 
 const allReducers = combineReducers({
     login: loginReducer,
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
     departuresState: departureReducer,
     newsState: newsReducer,
     passwordState: passwordReducer,
+    reportsState: reportReducer,
 });
 
 export default allReducers;
