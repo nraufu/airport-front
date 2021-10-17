@@ -122,10 +122,8 @@ button {
     }
 }
 
-
 /* Print Styles */
 .no-print {
-
     @media print {
         display: none !important;
         visibility: hidden !important;
@@ -133,6 +131,9 @@ button {
 }
 
 @media print {
+    p {
+        margin-bottom: 0 !important;
+    }
 
     body,
     html {
@@ -148,7 +149,19 @@ button {
         td {
             color: $black;
             border: 1px solid $black !important;
+            width: 150px !important;
+            max-width: 150px !important;
+            white-space: normal;
+            word-wrap: break-word;
         }
     }
 
+    .table-responsive {
+        width: 100%;
+        overflow: auto;
+
+        table {
+            max-width: 100%;
+        }
+    }
 }

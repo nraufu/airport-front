@@ -149,10 +149,10 @@ const Airlines = ({
             content: (item) => <a href={`tel:${item.phone}`}>{item.phone}</a>,
         },
         {
-            label: 'Total Flights',
+            label: 'Flights',
             path: 'flights',
             noSort: true,
-            content: (item) => <span>{item.flights.length}</span>,
+            content: (item) => item.flights.map((i) => i).join(', '),
         },
         {
             label: 'action',
