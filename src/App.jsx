@@ -16,6 +16,7 @@ import Loading from './components/Loading/Loading';
 import NotFound from './pages/NotFound/NotFound';
 import News from './pages/News/News';
 import ViewNews from './pages/News/ViewNews';
+import TaxiBooking from './pages/TaxiBooking/TaxiBooking';
 import { PrintContent } from './components/print-content/';
 
 const App = ({ location }) => {
@@ -49,7 +50,12 @@ const App = ({ location }) => {
                 >
                     <Switch location={location}>
                         <Route path='/schedules' component={Schedules} />
-                        <Route path='/services' component={Services} />
+                        <Route exact path='/services' component={Services} />
+                        <Route
+                            exact
+                            path='/services/taxi'
+                            component={TaxiBooking}
+                        />
                         <Route path='/weather' component={Weather} />
                         <Route path='/covid' component={Covid} />
                         <Route exact path='/news' component={News} />

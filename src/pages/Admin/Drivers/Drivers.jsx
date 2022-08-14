@@ -3,36 +3,26 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 import AccordionCard from '../../../components/Accordion/Accordion';
-import { ViewAirlineModal, EditAirlineModal } from './modals';
-import { airlineActions } from '../../../store/actions/airlines';
-import { countriesList } from '../../../components/UI/countries';
+import { EditDriverModal } from './modals';
+import { driverActions } from '../../../store/actions/drivers';
 import { getPagedData } from '../../../utils/paginate';
 import Pagination from '../../../components/Pagination/Pagination';
 import {
-    AddableInput,
     Input,
     Button,
     PrintButton,
     Table,
-    Select,
     ActionButtons,
     ConfirmationBox,
     SearchBox,
+    Select,
 } from '../../../components/UI';
 
-const Airlines = ({
-    airlines,
-    fetchAirlines,
-    createAirline,
-    deleteAirline,
-}) => {
-    const [name, setName] = useState('');
-    const [logo, setLogo] = useState('');
-    const [country, setCountry] = useState('');
-    const [website, setWebsite] = useState('');
-    const [headQuarterLocation, setheadQuarterLocation] = useState('');
+const Drivers = ({ drivers, fetchDrivers, createDriver, deleteDriver }) => {
+    const [fullNames, setFullNames] = useState('');
     const [phone, setPhone] = useState('');
-    const [flights, setFlights] = useState([]);
+    const [plateNumber, setPlateNumber] = useState('');
+    const [carType, setCarType] = useState('');
     const [email, setEmail] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -40,33 +30,20 @@ const Airlines = ({
     const [sortColumn, setSortColumn] = useState({});
 
     useEffect(() => {
-        fetchAirlines();
-    }, [fetchAirlines]);
+        fetchDrivers();
+    }, [fetchDrivers]);
 
-    const addAirline = async () => {
+    const addDriver = async () => {
         setIsSubmitting(true);
 
         if (
-            name === '' ||
-            logo === '' ||
-            country === '' ||
-            website === '' ||
-            headQuarterLocation === '' ||
+            fullNames === '' ||
+            plateNumber === '' ||
+            carType === '' ||
             phone === '' ||
-            email === '' ||
-            flights.length === 0
+            email === ''
         ) {
             toast.error('Please fill all the fields');
-            setIsSubmitting(false);
-            return;
-        }
-
-        if (
-            !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
-                website
-            )
-        ) {
-            toast.error('Please enter a valid website');
             setIsSubmitting(false);
             return;
         }
@@ -87,28 +64,24 @@ const Airlines = ({
             return;
         }
 
-        const result = await createAirline({
-            name,
-            logoImg: logo,
-            country,
-            flights,
-            website,
-            email,
-            headQuarterLocation,
+        const result = await createDriver({
+            fullNames,
             phone,
+            carType,
+            plateNumber,
+            email,
         });
 
         setIsSubmitting(false);
 
-        if (result.airline) {
-            toast.success('Airline created successfully');
-            setName('');
-            setLogo('');
-            setCountry('');
-            setFlights([]);
-            setWebsite('');
-            setheadQuarterLocation('');
+        if (result.driver) {
+            toast.success('Driver created successfully');
+            setFullNames('');
             setPhone('');
+            setPlateNumber('');
+            setCarType('');
+            setEmail('');
+
             return;
         } else {
             toast.error('Something Went Wrong');
@@ -117,23 +90,8 @@ const Airlines = ({
 
     const columns = [
         {
-            label: 'Airline',
-            path: 'logoUrl',
-            content: (item) => (
-                <img src={item.logoImgUri} alt='logo' className='logo-image' />
-            ),
-        },
-        { label: 'Name', path: 'name' },
-        { label: 'Country', path: 'country' },
-        {
-            label: 'Website',
-            path: 'website',
-            noSort: true,
-            content: (item) => (
-                <a href={item.website} target='_blank' rel='noreferrer'>
-                    {item.website}
-                </a>
-            ),
+            label: 'Full Names',
+            path: 'fullNames',
         },
         {
             label: 'Email',
@@ -149,10 +107,14 @@ const Airlines = ({
             content: (item) => <a href={`tel:${item.phone}`}>{item.phone}</a>,
         },
         {
-            label: 'Flights',
-            path: 'flights',
+            label: 'Car Type',
+            path: 'carType',
             noSort: true,
-            content: (item) => item.flights.map((i) => i).join(', '),
+        },
+        {
+            label: 'Plate Number',
+            path: 'plateNumber',
+            noSort: true,
         },
         {
             label: 'action',
@@ -160,17 +122,16 @@ const Airlines = ({
             noSort: true,
             content: (item) => (
                 <ActionButtons
-                    onView={() => ViewAirlineModal(item)}
-                    onEdit={() => EditAirlineModal(item)}
+                    onEdit={() => EditDriverModal(item)}
                     onDelete={() =>
                         ConfirmationBox({
                             title: 'Confirm deletion',
-                            message: `Are you sure you want to delete ${item.name} ?`,
+                            message: `Are you sure you want to delete ${item.fullNames} ?`,
                             onYes: async () => {
-                                const result = await deleteAirline(item._id);
+                                const result = await deleteDriver(item._id);
                                 if (result.message) {
                                     toast.success(
-                                        'Airline deleted successfully'
+                                        'Driver deleted successfully'
                                     );
                                 } else {
                                     toast.error('Something went wrong');
@@ -178,7 +139,7 @@ const Airlines = ({
                             },
                         })
                     }
-                    disable={['approve', 'reject']}
+                    disable={['view', 'approve', 'reject']}
                 />
             ),
         },
@@ -188,31 +149,33 @@ const Airlines = ({
         currentPage,
         sortColumn,
         searchQuery,
-        airlines
+        drivers
     );
 
     return (
         <>
             <div className='d-flex justify-content-between align-items-center title-secondary'>
-                <h1 className='mb-0'>Airlines</h1>
+                <h1 className='mb-0'>Taxi Drivers</h1>
                 <PrintButton className='btn btn-secondary ml-auto' />
             </div>
 
             <div className='no-print'>
-                <AccordionCard header='+ Add Airline'>
+                <AccordionCard header='+ Add Driver'>
                     <Container>
                         <Row>
                             <Col xs={12} md={6} lg={4}>
                                 <Input
                                     elementType='input'
-                                    name='name'
-                                    valueType='Name'
-                                    value={name}
+                                    name='fullName'
+                                    valueType='Full Name'
+                                    value={fullNames}
                                     elementConfig={{
                                         type: 'text',
-                                        placeholder: 'Name',
+                                        placeholder: 'Full Names',
                                     }}
-                                    onChange={(e) => setName(e.target.value)}
+                                    onChange={(e) =>
+                                        setFullNames(e.target.value)
+                                    }
                                 />
                             </Col>
 
@@ -232,55 +195,39 @@ const Airlines = ({
 
                             <Col xs={12} md={6} lg={4}>
                                 <Select
-                                    label='Country'
-                                    value={country}
-                                    onChange={(e) => setCountry(e.target.value)}
-                                    options={countriesList.map((country) => ({
-                                        value: country.name,
-                                        label: country.name,
-                                    }))}
+                                    label='Car Type'
+                                    value={carType}
+                                    onChange={(e) => setCarType(e.target.value)}
+                                    options={[
+                                        {
+                                            label: 'Normal',
+                                            value: 'Normal',
+                                        },
+                                        {
+                                            label: 'Van',
+                                            value: 'Van',
+                                        },
+                                        {
+                                            label: 'Bus',
+                                            value: 'Bus',
+                                        },
+                                    ]}
                                 />
                             </Col>
 
                             <Col xs={12} md={6} lg={4}>
                                 <Input
                                     elementType='input'
-                                    name='website'
-                                    valueType='Airline Website'
-                                    value={website}
+                                    name='plateNumber'
+                                    valueType='Plate Number'
+                                    value={plateNumber}
                                     elementConfig={{
                                         type: 'text',
-                                        placeholder: 'Website',
-                                    }}
-                                    onChange={(e) => setWebsite(e.target.value)}
-                                />
-                            </Col>
-
-                            <Col xs={12} md={6} lg={4}>
-                                <Input
-                                    elementType='input'
-                                    name='headQuarterLocation'
-                                    valueType='Head Quarter Address'
-                                    value={headQuarterLocation}
-                                    elementConfig={{
-                                        type: 'text',
-                                        placeholder: 'Head Quarter Address',
+                                        placeholder: 'Plate Number',
                                     }}
                                     onChange={(e) =>
-                                        setheadQuarterLocation(e.target.value)
+                                        setPlateNumber(e.target.value)
                                     }
-                                />
-                            </Col>
-
-                            <Col xs={12} md={6} lg={4}>
-                                <Input
-                                    elementType='image'
-                                    valueType='Logo image'
-                                    name='logo'
-                                    type='file'
-                                    multiple={false}
-                                    onDone={({ base64 }) => setLogo(base64)}
-                                    accept='image/*'
                                 />
                             </Col>
 
@@ -297,22 +244,13 @@ const Airlines = ({
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Col>
-
-                            <Col xs={12} md={6} lg={5}>
-                                <AddableInput
-                                    label='Flights'
-                                    placeholder='Enter Airline flights'
-                                    value={flights}
-                                    onChange={setFlights}
-                                />
-                            </Col>
                         </Row>
 
                         <Button
                             label='Submit'
                             className='btn btn-primary text-white mt-4'
                             isLoading={isSubmitting}
-                            onClick={addAirline}
+                            onClick={addDriver}
                         />
                     </Container>
                 </AccordionCard>
@@ -321,13 +259,13 @@ const Airlines = ({
             <div className='d-flex justify-content-between align-items-center table-header-count no-print'>
                 <p className='count'>
                     Showing <span className='text-primary'>{totalCount}</span>{' '}
-                    Airlines
+                    Drivers
                 </p>
 
                 <SearchBox
                     value={searchQuery}
                     onChange={setSearchQuery}
-                    label='Airline'
+                    label='Driver'
                 />
             </div>
 
@@ -348,14 +286,14 @@ const Airlines = ({
     );
 };
 
-const mapStateToProps = ({ airlinesState }) => ({
-    airlines: airlinesState.airlines,
+const mapStateToProps = ({ driversState }) => ({
+    drivers: driversState.drivers,
 });
 
 const mapDispatchToProps = {
-    fetchAirlines: airlineActions.getAll,
-    createAirline: airlineActions.create,
-    deleteAirline: airlineActions.remove,
+    fetchDrivers: driverActions.getAll,
+    createDriver: driverActions.create,
+    deleteDriver: driverActions.remove,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Airlines);
+export default connect(mapStateToProps, mapDispatchToProps)(Drivers);

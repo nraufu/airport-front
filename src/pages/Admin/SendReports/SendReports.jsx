@@ -166,7 +166,7 @@ const SendReports = ({
                             },
                         })
                     }
-                    disable={['view', 'edit']}
+                    disable={['view', 'edit', 'approve', 'reject']}
                 />
             ),
         },

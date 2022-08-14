@@ -5,7 +5,7 @@ import Clock from '../Clock/Clock';
 const Header = ({ isAuthenticated }) => {
     return (
         <>
-            {!isAuthenticated && (
+            {!isAuthenticated && !window.location.pathname.includes('/dashboard') && (
                 <div className='top-bar bg-primary text-white'>
                     <div className='container'>
                         <div className='top-bar--left'>
@@ -20,7 +20,7 @@ const Header = ({ isAuthenticated }) => {
                                 <li>
                                     <a href='tel:+00 000-0000-000'>
                                         <i className='lnr lnr-phone-handset'></i>
-                                        +00 000-0000-000
+                                        +250 785 833 843
                                     </a>
                                 </li>
                             </ul>
@@ -50,7 +50,18 @@ const Header = ({ isAuthenticated }) => {
                     </div>
                 </div>
             )}
-
+            {/* {!isAuthenticated && !window.location.pathname.includes('/dashboard') && (
+                <div className='marquee bg-primary text-white'>
+                    <div className="container">
+                        <div className="marquee__inner">
+					    	<span>Showreel</span>
+					    	<span>Showreel</span>
+					    	<span>Showreel</span>
+					    	<span>Showreel</span>
+					    </div>
+                    </div>
+                </div>
+            )} */}
             <Navbar isAuthenticated={isAuthenticated} />
         </>
     );

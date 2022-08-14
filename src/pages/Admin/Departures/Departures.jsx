@@ -145,6 +145,7 @@ const Departures = ({
                             },
                         })
                     }
+                    disable={['approve', 'reject']}
                 />
             ),
         },

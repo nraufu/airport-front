@@ -147,6 +147,7 @@ const Arrivals = ({
                             },
                         })
                     }
+                    disable={['approve', 'reject']}
                 />
             ),
         },

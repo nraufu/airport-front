@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import NewsList from './AdminNews/NewsList';
 import Airlines from './Airlines/Airlines';
 import Arrivals from './Arrivals/Arrivals';
+import BookingSystem from './Booking/BookingSystem';
 import Departures from './Departures/Departures';
+import Drivers from './Drivers/Drivers';
 import General from './General';
 import SendReports from './SendReports/SendReports';
 
@@ -58,6 +60,26 @@ const Dashboard = () => {
                             <span>Arrivals</span>
                         </NavLink>
                     </li>
+                    <li className={`side-nav__item ${isActive('taxiDrivers')}`}>
+                        <NavLink
+                            to='/dashboard/taxDrivers'
+                            className='side-nav__link'
+                            onClick={() => setActiveTab('taxiDrivers')}
+                        >
+                            <i className='lnr lnr-car side-nav__icon' />
+                            <span>Taxi Drivers</span>
+                        </NavLink>
+                    </li>
+                    <li className={`side-nav__item ${isActive('taxiBookings')}`}>
+                        <NavLink
+                            to='/dashboard/taxBookings'
+                            className='side-nav__link'
+                            onClick={() => setActiveTab('taxiBookings')}
+                        >
+                            <i className='lnr lnr-bookmark side-nav__icon' />
+                            <span>Taxi Bookings</span>
+                        </NavLink>
+                    </li>
                     <li className={`side-nav__item ${isActive('news')}`}>
                         <NavLink
                             to='/dashboard/news'
@@ -88,6 +110,8 @@ const Dashboard = () => {
                 {activeTab === 'arrivals' && <Arrivals />}
                 {activeTab === 'news' && <NewsList />}
                 {activeTab === 'reports' && <SendReports />}
+                {activeTab === 'taxiDrivers' && <Drivers />}
+                {activeTab === 'taxiBookings' && <BookingSystem />}
             </main>
         </div>
     );

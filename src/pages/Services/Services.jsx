@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../parts/Footer/Footer';
 import bannerImg from '../../assets/images/concierge.jpg';
@@ -8,6 +9,7 @@ import internetImg from '../../assets/images/internet.jpg';
 import healthImg from '../../assets/images/health.jpg';
 import coffeeImg from '../../assets/images/coffee.jpg';
 import securityImg from '../../assets/images/security.jpg';
+import taxiImg from '../../assets/images/airport-taxi.jpg';
 
 const Services = () => {
     return (
@@ -15,7 +17,33 @@ const Services = () => {
             <Banner title='Services' bannerImg={bannerImg} />
             <section className='spacing-md'>
                 <div className='container'>
-                    {/* <!-- service 01 --*/}
+                    {/* <!-- service 01 --> */}
+                    <div className='row service-item align-items-center'>
+                        <div className='col-md-6 col-12 order-last order-md-first'>
+                            <div className='service-item__content pr'>
+                                <h2 className='service-item__title'>
+                                    Taxi
+                                </h2>
+                                <p>
+                                    At the airport we have taxi car ready to drop you any where in the country at anytime or pick you up from your home.
+                                </p>
+
+                                <NavLink to="/services/taxi" className="btn btn-primary text-white">Book A taxi</NavLink>
+                            </div>
+                        </div>
+
+                        <div className='col-md-6 col-12'>
+                            <div className='service-item__img img-right'>
+                                <img
+                                    src={taxiImg}
+                                    alt='service-img'
+                                    className='img-fluid'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* <!-- service 02 --*/}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12'>
                             <div className='service-item__img'>
@@ -74,7 +102,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    {/* -- service 02 -- */}
+                    {/* -- service 03 -- */}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12 order-last order-md-first'>
                             <div className='service-item__content pr'>
@@ -140,7 +168,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    {/* -- service 03 -- */}
+                    {/* -- service 04 -- */}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12'>
                             <div className='service-item__img'>
@@ -175,7 +203,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    {/* -- service 04 -- */}
+                    {/* -- service 05 -- */}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12 order-last order-md-first'>
                             <div className='service-item__content pr'>
@@ -210,7 +238,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    {/* -- service 05 -- */}
+                    {/* -- service 06 -- */}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12'>
                             <div className='service-item__img'>
@@ -240,7 +268,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    {/* -- service 06 -- */}
+                    {/* -- service 07 -- */}
                     <div className='row service-item align-items-center'>
                         <div className='col-md-6 col-12 order-last order-md-first'>
                             <div className='service-item__content pr'>

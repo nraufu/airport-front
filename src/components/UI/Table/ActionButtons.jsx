@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 
 const DataActionButtons = (props) => {
-    const { onView, onDelete, onEdit } = props;
+    const { onView, onDelete, onEdit, onApprove, onReject } = props;
     let { disable } = props;
 
     if (typeof disable === 'undefined') {
@@ -42,12 +42,30 @@ const DataActionButtons = (props) => {
                 onClick={() => onEdit()}
             />
         ),
+        approve: (
+            <Button
+                title='Approve'
+                className='btn p-1 text-primary'
+                icon='lnir lnir-checkmark-circle'
+                onClick={() => onApprove()}
+            />
+        ),
+        reject: (
+            <Button
+                title='Reject'
+                className='btn p-1 text-danger'
+                icon='lnir lnir-cross-circle'
+                onClick={() => onReject()}
+            />
+        ),
     };
     return (
         <div className='d-flex data-action-buttons no-print'>
             {isDisabled('view') || buttons.view}
             {isDisabled('edit') || buttons.edit}
             {isDisabled('delete') || buttons.delete}
+            {isDisabled('approve') || buttons.approve}
+            {isDisabled('reject') || buttons.reject}
         </div>
     );
 };

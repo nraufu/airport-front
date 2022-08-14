@@ -6,6 +6,8 @@ import departureReducer from './departures';
 import newsReducer from './news';
 import passwordReducer from './passwords';
 import reportReducer from './reports';
+import driverReducer from './drivers';
+import bookingReducer from './bookings';
 
 const allReducers = combineReducers({
     login: loginReducer,
@@ -15,6 +17,8 @@ const allReducers = combineReducers({
     newsState: newsReducer,
     passwordState: passwordReducer,
     reportsState: reportReducer,
+    driversState: driverReducer,
+    bookingsState: bookingReducer,
 });
 
 export default allReducers;
