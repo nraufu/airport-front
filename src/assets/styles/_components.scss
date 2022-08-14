@@ -616,38 +616,14 @@ table {
 }
 
 /* --------------------- marquees info --------------------- */
-// $offset: 20vw;
-// $move-initial: calc(-25% + $offset);
-// $move-final: calc(-50% + $offset);
+.marquee {
+    &-container {
+        padding-bottom: 1rem;
+    }
 
-// .marquee {
-//     &__inner {
-//         width: 100%;
-//         display: flex;
-//         position: relative;
-//         animation: marquee 60s linear infinite;
-//         overflow: hidden;
-
-//         span {
-//             white-space: nowrap;
-//             font-size: 1.4rem;
-//             padding-left: 0;
-//             padding-top: 1rem;
-//             padding-bottom: 1rem;
-//             padding-right: 0;
-//             margin-right: 1.5rem;
-//             font-weight: 600;
-//             line-height: 1.5;
-//         }
-//     }
-// }
-
-// @keyframes marquee {
-//     0% {
-//         transform: translate(0, 0);
-//     }
-
-//     100% {
-//         transform: translate(-100%, 0);
-//     }
-// }
+    &__element {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-right: 1.5rem;
+    }
+}
